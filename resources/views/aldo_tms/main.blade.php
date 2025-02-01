@@ -109,6 +109,38 @@
   </div>
 
   <!-- Core JS -->
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const captureButton = document.getElementById('capture');
+    const fileInput = document.getElementById('photo-input');
+
+    navigator.mediaDevices.getUserMedia({
+        video: true
+      })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(error => {
+        console.error("Error accessing camera:", error);
+      });
+
+    captureButton.addEventListener('click', () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob(blob => {
+        const file = new File([blob], "photo.png", {
+          type: "image/png"
+        });
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        fileInput.files = dataTransfer.files;
+      }, "image/png");
+    });
+  </script>
   <!-- build:js assets/vendor/js/core.js -->
   <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
   <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
