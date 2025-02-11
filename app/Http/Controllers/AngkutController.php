@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\angkut;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class AngkutController extends Controller
 {
@@ -13,33 +15,45 @@ class AngkutController extends Controller
         return view('aldo_tms/pages/angkut/angkut', compact('data'));
     }
 
+
     public function store(Request $request)
     {
         $this->validate($request, [
-            'tgl_masuk'    => 'required',
+            'tgl_masuk'    => 'required|date',
             'sopir_nama'   => 'required',
             'sopir_nik'    => 'required',
             'sopir_tlp'    => 'required',
             'transporter'  => 'required',
             'nopol_mobil'  => 'required',
             'customer'     => 'required',
-            'tgl_sj'       => 'required',
+            'tgl_sj'       => 'required|date',
             'no_sj'        => 'required',
             'nama_barang'  => 'required',
             'keterangan'   => 'required',
-            'foto_sim'     => 'required|image|mimes:jpg,png,jpeg',
-            'foto_stnk'    => 'required|image|mimes:jpg,png,jpeg',
-            'foto_dokumen' => 'required|image|mimes:jpg,png,jpeg',
+            'foto_sim'     => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'foto_stnk'    => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'safety_check' => 'required|boolean',
             'empty_in'     => 'required|boolean',
         ]);
 
-        //image upload
-        $image_sim =  $request->file('foto_sim')->getClientOriginalName();
-        $path_sim = $request->file('foto_sim')->storeAS('public/img', $image_sim);
-        $image_stnk =  $request->file('foto_stnk')->getClientOriginalName();
-        $path_stnk = $request->file('foto_stnk')->storeAS('public/img', $image_stnk);
+        $path_sim = null;
+        $path_stnk = null;
 
+        if ($request->foto_sim) {
+            $imageData = base64_decode($request->foto_sim);
+            $fileName = 'sim_' . time() . '.jpg';
+            file_put_contents(storage_path('app/public/img/' . $fileName), $imageData);
+            $path_sim = 'public/img/' . $fileName;
+        }
+        
+        if ($request->foto_stnk) {
+            $imageData = base64_decode($request->foto_stnk);
+            $fileName = 'stnk_' . time() . '.jpg';
+            file_put_contents(storage_path('app/public/img/' . $fileName), $imageData);
+            $path_stnk = 'public/img/' . $fileName;
+        }
+        
+        // Simpan data ke database
         Angkut::create([
             'tgl_masuk'    => $request->tgl_masuk,
             'sopir_nama'   => $request->sopir_nama,
@@ -58,8 +72,10 @@ class AngkutController extends Controller
             'empty_in'     => $request->empty_in,
         ]);
 
-        return redirect()
-            ->route('angkut.index')
-            ->with(['Success' => 'Data has been added']);
+        return redirect()->route('angkut.index')->with(['success' => 'Data has been added']);
     }
+
+
+
+
 }

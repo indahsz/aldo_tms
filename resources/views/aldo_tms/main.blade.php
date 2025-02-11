@@ -110,37 +110,144 @@
 
   <!-- Core JS -->
   <script>
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const captureButton = document.getElementById('capture');
-    const fileInput = document.getElementById('photo-input');
-
-    navigator.mediaDevices.getUserMedia({
+    document.addEventListener("DOMContentLoaded", function() {
+      // Variables for both modals (1 and 2)
+      const video1 = document.getElementById('video1');
+      const canvas1 = document.getElementById('canvas1');
+      const photoPreview1 = document.getElementById('photoPreview');
+      const captureButton1 = document.getElementById('capture1');
+      const saveButton1 = document.getElementById('savePhoto1');
+  
+      const video2 = document.getElementById('video2');
+      const canvas2 = document.getElementById('canvas2');
+      const captureButton2 = document.getElementById('capture2');
+      const saveButton2 = document.getElementById('savePhoto2'); // Make sure this button exists for Save Photo in Capture Modal 2
+  
+      // Start Camera for Capture Modal 1
+      navigator.mediaDevices.getUserMedia({
         video: true
       })
       .then(stream => {
-        video.srcObject = stream;
+        video1.srcObject = stream;
+        video2.srcObject = stream; // Reuse stream for Capture Modal 2
       })
       .catch(error => {
         console.error("Error accessing camera:", error);
       });
-
-    captureButton.addEventListener('click', () => {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      canvas.toBlob(blob => {
-        const file = new File([blob], "photo.png", {
-          type: "image/png"
+  
+      let capturedImage1 = null;
+      let capturedImage2 = null;
+  
+      // Function to compress image
+      function compressImage(canvas, imageType, quality = 0.8, maxWidth = 1024) {
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = canvas.toDataURL(imageType);
+  
+        return new Promise((resolve) => {
+          img.onload = () => {
+            const ratio = img.width / img.height;
+            let width = maxWidth;
+            let height = maxWidth / ratio;
+            
+            if (img.width < maxWidth) {
+              width = img.width;
+              height = img.height;
+            }
+  
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, width, height);
+  
+            const compressedImage = canvas.toDataURL(imageType, quality);
+            resolve(compressedImage);
+          };
         });
-        const dataTransfer = new DataTransfer();
-        dataTransfer.items.add(file);
-        fileInput.files = dataTransfer.files;
-      }, "image/png");
+      }
+  
+      // Capture Image for Capture Modal 1
+      captureButton1.addEventListener('click', function() {
+        canvas1.width = video1.videoWidth;
+        canvas1.height = video1.videoHeight;
+        canvas1.getContext('2d').drawImage(video1, 0, 0, canvas1.width, canvas1.height);
+  
+        // Convert to Base64 for Modal 1
+        compressImage(canvas1, 'image/png').then((compressedImage) => {
+          capturedImage1 = compressedImage;
+  
+          // Show preview for Modal 1
+          photoPreview1.src = capturedImage1;
+          photoPreview1.style.display = "block";
+        });
+      });
+  
+      // Save Image for Capture Modal 1
+      saveButton1.addEventListener('click', function() {
+        if (!capturedImage1) {
+          alert("Please capture a photo first.");
+          return;
+        }
+  
+        // Save path to form input for Modal 1
+        document.getElementById('photo_sim').value = capturedImage1;
+  
+        // Show preview in "Tambah Data" modal (for Modal 1)
+        document.getElementById('previewPhotoSim').src = capturedImage1;
+        document.getElementById('previewPhotoSim').style.display = "block";
+  
+        // Close Capture Modal 1
+        let captureModal1 = bootstrap.Modal.getInstance(document.getElementById('captureModal1'));
+        captureModal1.hide();
+  
+        // Open "Tambah Data" modal (basicModal)
+        let tambahDataModal = new bootstrap.Modal(document.getElementById('basicModal'));
+        tambahDataModal.show();
+      });
+  
+      // Capture Image for Capture Modal 2
+      captureButton2.addEventListener('click', function() {
+        canvas2.width = video2.videoWidth;
+        canvas2.height = video2.videoHeight;
+        canvas2.getContext('2d').drawImage(video2, 0, 0, canvas2.width, canvas2.height);
+  
+        // Convert to Base64 for Modal 2
+        compressImage(canvas2, 'image/png').then((compressedImage) => {
+          capturedImage2 = compressedImage;
+  
+          // Show preview for Modal 2
+          const photoPreview2 = document.getElementById('photoPreview2');
+          photoPreview2.src = capturedImage2;
+          photoPreview2.style.display = "block";
+        });
+      });
+  
+      // Save Image for Capture Modal 2
+      saveButton2.addEventListener('click', function() {
+        if (!capturedImage2) {
+          alert("Please capture a photo first.");
+          return;
+        }
+  
+        // Save path to form input for Modal 2
+        document.getElementById('photo_stnk').value = capturedImage2;
+  
+        // Show preview in "Tambah Data" modal (for Modal 2)
+        document.getElementById('previewPhotoStnk').src = capturedImage2;
+        document.getElementById('previewPhotoStnk').style.display = "block";
+  
+        // Close Capture Modal 2
+        let captureModal2 = bootstrap.Modal.getInstance(document.getElementById('captureModal2'));
+        captureModal2.hide();
+  
+        // Open "Tambah Data" modal (basicModal)
+        let tambahDataModal = new bootstrap.Modal(document.getElementById('basicModal'));
+        tambahDataModal.show();
+      });
+      
     });
-  </script>
+  </script>  
+
+  
   <!-- build:js assets/vendor/js/core.js -->
   <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
   <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
@@ -149,6 +256,13 @@
 
   <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
   <!-- endbuild -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 
   <!-- Vendors JS -->
   <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
