@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('angkut.store') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('bongkar.store') }}">
                     @csrf
                     <div class="row">
                         <div class="col-3">
@@ -46,15 +46,6 @@
 
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="transporter" class="col-form-label">Transporter</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="text" id="transporter" name="transporter" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-3">
                             <label for="nopol_mobil" class="col-form-label">Nopol Mobil</label>
                         </div>
                         <div class="col-9">
@@ -64,7 +55,7 @@
 
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="customer" class="col-form-label">Customer</label>
+                            <label for="customer" class="col-form-label">Supplier</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="customer" name="customer" class="form-control" required>
@@ -104,18 +95,6 @@
                         </div>
                         <div class="col-9">
                             <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="safety_check" class="col-form-label">Kelengkapan</label>
-                        </div>
-                        <div class="col-9">
-                            <select class="form-select" name="safety_check" id="safety_check">
-                                <option value="1">Lengkap</option>
-                                <option value="0">Tidak Lengkap</option>
-                            </select>
                         </div>
                     </div>
 

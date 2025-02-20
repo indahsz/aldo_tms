@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Tanggal Masuk</th>
+                        <th>Tgl Masuk</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
@@ -46,7 +46,7 @@
                     <tr>
                         <td>{{ $key +1 }} </td>
                         <td>{{ $item->tgl_masuk}} </td>
-                        <td>{{ $item->sopit_nama}} </td>
+                        <td>{{ $item->sopir_nama}} </td>
                         <td>{{ $item->sopir_nik}} </td>
                         <td>{{ $item->sopir_tlp}} </td>
                         <td>{{ $item->transporter}} </td>
