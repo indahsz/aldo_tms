@@ -15,12 +15,7 @@ class angkut extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
-    protected $fillable = ['id', 'tgl_masuk', 'sopir_nama', 'sopir_nik', 'sopir_tlp', 'transporter', 'nopol_mobil', 'customer', 'tgl_sj', 'no_sj', 'nama_barang', 'keterangan', 'foto_sim', 'foto_stnk', 'safety_check', 'empty_in', 'empty_out'];
-
-    public $timestamps = true;
-
-    const CREATED_AT = 'waktu_in';
-    const UPDATED_AT = 'waktu_out';
+    protected $fillable = ['id', 'tgl_masuk', 'sopir_nama', 'sopir_nik', 'sopir_tlp', 'transporter', 'nopol_mobil', 'customer', 'tgl_sj', 'no_sj', 'nama_barang', 'keterangan','safety_check', 'empty_in', 'empty_out', 'foto_sim', 'foto_dokumen', 'foto_stnk', 'waktu_in', 'waktu_out'];
 
     public function setID()
     {

@@ -13,10 +13,10 @@
                             <label for="tgl_masuk" class="col-form-label">Tanggal Masuk</label>
                         </div>
                         <div class="col-9">
-                            <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control" value="{{ \Carbon\Carbon::today()->toDateString() }}" required>
+                            <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control"
+                                value="{{ \Carbon\Carbon::today()->toDateString() }}" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="sopir_nama" class="col-form-label">Nama Sopir</label>
@@ -25,7 +25,6 @@
                             <input type="text" id="sopir_nama" name="sopir_nama" class="form-control" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="sopir_nik" class="col-form-label">NIK Sopir</label>
@@ -34,7 +33,6 @@
                             <input type="text" id="sopir_nik" name="sopir_nik" class="form-control" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="sopir_tlp" class="col-form-label">Telepon Sopir</label>
@@ -52,7 +50,6 @@
                             <input type="text" id="transporter" name="transporter" class="form-control" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="nopol_mobil" class="col-form-label">Nopol Mobil</label>
@@ -70,7 +67,6 @@
                             <input type="text" id="customer" name="customer" class="form-control" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="tgl_sj" class="col-form-label">Tgl SJ</label>
@@ -79,7 +75,6 @@
                             <input type="date" class="form-control" id="tgl_sj" name="tgl_sj" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="no_sj" class="col-form-label">No. SJ</label>
@@ -97,7 +92,6 @@
                             <input type="text" id="nama_barang" name="nama_barang" class="form-control" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="keterangan" class="col-form-label">Keterangan</label>
@@ -132,58 +126,22 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="phto_sim" class="col-form-label">Foto SIM</label>
+                            <label for="waktu_in" class="col-form-label">Waktu IN</label>
                         </div>
                         <div class="col-9">
-                            <img id="previewPhotoSim" src="" style="display:none; width: 100px; height: auto;" />
-                            <input type="hidden" id="phto_sim" name="foto_sim"> <!-- Base64 Data --> <!-- Show Path -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#captureModal1">
-                                Ambil Foto SIM
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="photo_stnk" class="col-form-label">Foto STNK</label>
-                        </div>
-                        <div class="col-9">
-                            <img id="previewPhotoStnk" src="" style="display:none; width: 100px; height: auto;" />
-                            <input type="hidden" id="photo_stnk" name="foto_stnk"> <!-- Base64 Data --> <!-- Show Path -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#captureModal2">
-                                Ambil Foto STNK
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="photo_dokumen" class="col-form-label">Foto Dokumen</label>
-                        </div>
-                        <div class="col-9">
-                            <img id="previewPhotoDokumen" src="" style="display:none; width: 100px; height: auto;" />
-                            <input type="hidden" id="photo_dokumen" name="foto_dokumen"> <!-- Base64 Data --> <!-- Show Path -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#captureModal3">
-                                Ambil Foto Dokumen
-                            </button>
+                            <input type="datetime-local" class="form-control" id="waktu_in" name="waktu_in"
+                                required>
                         </div>
                     </div>
             </div>
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Tutup
+                </button>
+                <button type="submit" class="btn btn-primary">Simpan data</button>
+            </div>
+            </form>
         </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                Batal
-            </button>
-            <button type="submit" class="btn btn-primary">Simpan Data</button>
-        </div>
-        </form>
     </div>
 </div>
 </div>
-
-<!-- Include Capture Modals -->
-@include('aldo_tms.pages.angkut.modals.capture1')
-@include('aldo_tms.pages.angkut.modals.capture2')
-@include('aldo_tms.pages.angkut.modals.capture3')

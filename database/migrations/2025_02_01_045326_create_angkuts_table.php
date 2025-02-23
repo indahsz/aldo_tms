@@ -24,16 +24,16 @@ return new class extends Migration
             $table->string('no_sj');
             $table->string('nama_barang');
             $table->string('keterangan');
-            $table->string('foto_sim');
-            $table->string('foto_stnk');
-            $table->string('foto_dokumen');
+            $table->string('foto_sim')->nullable();
+            $table->string('foto_stnk')->nullable();
+            $table->string('foto_dokumen')->nullable();
             $table->boolean('safety_check');
             $table->boolean('empty_in')->default(false);
             $table->boolean('empty_out')->default(true);
-            $table->string('user_created');
-            $table->string('user_updated');
-            $table->timestamp('waktu_in')->nullable();
-            $table->timestamp('waktu_out')->nullable();
+            $table->string('user_created')->nullable();
+            $table->string('user_updated')->nullable();
+            $table->dateTime('waktu_in')->nullable();
+            $table->dateTime('waktu_out')->nullable();
             $table->timestamps();
         });
     }

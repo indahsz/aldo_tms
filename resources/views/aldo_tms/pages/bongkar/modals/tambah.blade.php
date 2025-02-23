@@ -163,6 +163,6 @@
 </div>
 
 <!-- Include Capture Modals -->
-@include('aldo_tms.pages.angkut.modals.capture1')
-@include('aldo_tms.pages.angkut.modals.capture2')
-@include('aldo_tms.pages.angkut.modals.capture3')
+@include('aldo_tms.pages.bongkar.modals.capture1')
+@include('aldo_tms.pages.bongkar.modals.capture2')
+@include('aldo_tms.pages.bongkar.modals.capture3')
