@@ -12,7 +12,7 @@ class AngkutController extends Controller
 {
     public function index()
     {
-        $data = angkut::paginate(20);
+        $data = angkut::paginate(5);
         return view('aldo_tms/pages/angkut/angkut', compact('data'));
     }
 

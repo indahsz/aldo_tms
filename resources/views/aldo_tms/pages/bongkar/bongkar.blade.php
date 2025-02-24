@@ -73,7 +73,7 @@
                                     height="50" class="rounded img-thumbnail">
                             </a>
                         </td>
-                        <td class="text-center align-middle">
+                        <td>
                             <button type="button" class="btn btn-primary upload-dokumen-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-dokumen" data-id="{{ $item->id }}">
                                 +

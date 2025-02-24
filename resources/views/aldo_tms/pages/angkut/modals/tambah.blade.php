@@ -97,7 +97,8 @@
                             <label for="keterangan" class="col-form-label">Keterangan</label>
                         </div>
                         <div class="col-9">
-                            <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required></textarea>
+                            <input class="form-control" id="keterangan" name="keterangan" class="form-control"
+                                required>
                         </div>
                     </div>
 
