@@ -102,6 +102,6 @@
         }
 
         // Initialize modals
-        setupUploadModal("upload-stnk", "video-stnk", "canvas-stnk", "capture-stnk", "preview-stnk", "stnk-captured-image", "upload-stnk-form", ".upload-stnk-btn", "/angkut/uploadStnk");
+        setupUploadModal("upload-stnk", "video-stnk", "canvas-stnk", "capture-stnk", "preview-stnk", "stnk-captured-image", "upload-stnk-form", ".upload-stnk-btn", "/bongkar/uploadStnk");
     });
 </script>

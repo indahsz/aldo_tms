@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data" id="upload-sim-form">
                     @csrf
-                    <input type="hidden" name="id" id="angkut-id">
+                    <input type="hidden" name="id" id="bongkar-id">
                     <input type="hidden" name="captured_image" id="captured_image">
 
                     <div class="row">
@@ -92,8 +92,8 @@
                 let id = this.getAttribute("data-id");
                 let form = document.getElementById("upload-sim-form");
 
-                form.action = `/angkut/uploadSim/${id}`;
-                document.getElementById("angkut-id").value = id;
+                form.action = `/bongkar/uploadSim/${id}`;
+                document.getElementById("bongkar-id").value = id;
             });
         });
     });

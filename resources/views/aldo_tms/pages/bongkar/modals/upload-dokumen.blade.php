@@ -101,6 +101,6 @@
         }
 
         // Initialize modals
-        setupUploadModal("upload-dokumen", "video-dokumen", "canvas-dokumen", "capture-dokumen", "preview-dokumen", "dokumen-captured-image", "upload-dokumen-form", ".upload-dokumen-btn", "/angkut/uploadDokumen");
+        setupUploadModal("upload-dokumen", "video-dokumen", "canvas-dokumen", "capture-dokumen", "preview-dokumen", "dokumen-captured-image", "upload-dokumen-form", ".upload-dokumen-btn", "/bongkar/uploadDokumen");
     });
 </script>

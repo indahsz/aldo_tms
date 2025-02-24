@@ -97,9 +97,9 @@ class BongkarController extends Controller
             'foto_stnk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $angkut = Bongkar::find($id);
+        $bongkar = Bongkar::find($id);
 
-        if (!$angkut) {
+        if (!$bongkar) {
             return redirect()->back()->with('error', 'Data not found!');
         }
 
@@ -112,7 +112,7 @@ class BongkarController extends Controller
 
             Storage::disk('public')->put("upload/images/stnk/$imageName", base64_decode($image));
 
-            $angkut->update(['foto_stnk' => "upload/images/stnk/$imageName"]);
+            $bongkar->update(['foto_stnk' => "upload/images/stnk/$imageName"]);
         }
 
         // Handle file upload
@@ -121,7 +121,7 @@ class BongkarController extends Controller
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('upload/images/stnk', $fileName, 'public');
 
-            $angkut->update(['foto_stnk' => $path]);
+            $bongkar->update(['foto_stnk' => $path]);
         }
 
         return redirect()->back()->with('success', 'STNK updated successfully!');
@@ -134,9 +134,9 @@ class BongkarController extends Controller
             'foto_dokumen' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $angkut = Bongkar::find($id);
+        $bongkar = Bongkar::find($id);
 
-        if (!$angkut) {
+        if (!$bongkar) {
             return redirect()->back()->with('error', 'Data not found!');
         }
 
@@ -148,7 +148,7 @@ class BongkarController extends Controller
 
             Storage::disk('public')->put("upload/images/dokumen/$imageName", base64_decode($image));
 
-            $angkut->update(['foto_dokumen' => "upload/images/dokumen/$imageName"]);
+            $bongkar->update(['foto_dokumen' => "upload/images/dokumen/$imageName"]);
         }
 
         // Handle file upload
@@ -157,7 +157,7 @@ class BongkarController extends Controller
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('upload/images/dokumen', $fileName, 'public');
 
-            $angkut->update(['foto_dokumen' => $path]);
+            $bongkar->update(['foto_dokumen' => $path]);
         }
 
         return redirect()->back()->with('success', 'Dokumen uploaded successfully!');
