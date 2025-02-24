@@ -19,7 +19,10 @@ Route::middleware('auth')->group(function () {
 
     // Resource routes for 'bongkar'
     Route::resource('bongkar', BongkarController::class);
+    Route::post('/bongkar/uploadSim/{id}', [BongkarController::class, 'uploadSim'])->name('bongkar.uploadSim');
+    Route::post('/bongkar/uploadStnk/{id}', [BongkarController::class, 'uploadStnk'])->name('bongkar.uploadStnk');
+    Route::post('/bongkar/uploadDokumen/{id}', [BongkarController::class, 'uploadDokumen'])->name('bongkar.uploadDokumen');
 });
 
 // Laravel Breeze authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

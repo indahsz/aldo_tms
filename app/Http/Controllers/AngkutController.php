@@ -35,7 +35,7 @@ class AngkutController extends Controller
             'empty_in'     => 'required|boolean',
             'waktu_in'     => 'required'
         ]);
-        
+
         // Simpan data ke database
         Angkut::create([
             'tgl_masuk'    => $request->tgl_masuk,
@@ -206,15 +206,4 @@ class AngkutController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('angkut.index')->with(['success' => 'Data has been deleted']);
     }
-
-
-
-
-
-
-
-
-
-
-
 }

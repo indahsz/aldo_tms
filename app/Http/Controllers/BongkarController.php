@@ -6,6 +6,7 @@ use App\Models\bongkar;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class BongkarController extends Controller
 {
@@ -31,24 +32,8 @@ class BongkarController extends Controller
             'foto_sim'     => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'foto_stnk'    => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'empty_in'     => 'required|boolean',
+            'waktu_in'     => 'required',
         ]);
-
-        $path_sim = null;
-        $path_stnk = null;
-
-        if ($request->foto_sim) {
-            $imageData = base64_decode($request->foto_sim);
-            $fileName = 'sim_' . time() . '.jpg';
-            file_put_contents(storage_path('app/public/img/' . $fileName), $imageData);
-            $path_sim = 'public/img/' . $fileName;
-        }
-
-        if ($request->foto_stnk) {
-            $imageData = base64_decode($request->foto_stnk);
-            $fileName = 'stnk_' . time() . '.jpg';
-            file_put_contents(storage_path('app/public/img/' . $fileName), $imageData);
-            $path_stnk = 'public/img/' . $fileName;
-        }
 
         // Simpan data ke database
         bongkar::create([
@@ -62,11 +47,157 @@ class BongkarController extends Controller
             'no_sj'        => $request->no_sj,
             'nama_barang'  => $request->nama_barang,
             'keterangan'   => $request->keterangan,
-            'foto_sim'     => $path_sim,
-            'foto_stnk'    => $path_stnk,
             'empty_in'     => $request->empty_in,
+            'waktu_in'     => $request->waktu_in
         ]);
 
         return redirect()->route('bongkar.index')->with(['success' => 'Data has been added']);
+    }
+    public function uploadSim(Request $request, $id)
+    {
+        $request->validate([
+            'captured_image' => 'nullable|string',
+            'foto_sim' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $bongkar = Bongkar::find($id);
+
+        if (!$bongkar) {
+            return redirect()->back()->with('error', 'Data not found!');
+        }
+
+        // Handle camera-captured image (Base64)
+        if ($request->captured_image) {
+            $image = $request->captured_image;
+            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = 'sim_' . time() . '_' . Str::random(10) . '.png';
+
+            Storage::disk('public')->put("upload/images/sim/$imageName", base64_decode($image));
+
+            $bongkar->update(['foto_sim' => "upload/images/sim/$imageName"]);
+        }
+
+        // Handle file upload
+        if ($request->hasFile('foto_sim')) {
+            $file = $request->file('foto_sim');
+            $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('upload/images/sim', $fileName, 'public');
+
+            $bongkar->update(['foto_sim' => $path]);
+        }
+
+        return redirect()->back()->with('success', 'SIM updated successfully!');
+    }
+
+    public function uploadStnk(Request $request, $id)
+    {
+        $request->validate([
+            'captured_image' => 'nullable|string',
+            'foto_stnk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $angkut = Bongkar::find($id);
+
+        if (!$angkut) {
+            return redirect()->back()->with('error', 'Data not found!');
+        }
+
+        // Handle camera-captured image (Base64)
+        if ($request->captured_image) {
+            $image = $request->captured_image;
+            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = 'stnk_' . time() . '_' . Str::random(10) . '.png';
+
+            Storage::disk('public')->put("upload/images/stnk/$imageName", base64_decode($image));
+
+            $angkut->update(['foto_stnk' => "upload/images/stnk/$imageName"]);
+        }
+
+        // Handle file upload
+        if ($request->hasFile('foto_stnk')) {
+            $file = $request->file('foto_stnk');
+            $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('upload/images/stnk', $fileName, 'public');
+
+            $angkut->update(['foto_stnk' => $path]);
+        }
+
+        return redirect()->back()->with('success', 'STNK updated successfully!');
+    }
+
+    public function uploadDokumen(Request $request, $id)
+    {
+        $request->validate([
+            'captured_image' => 'nullable|string',
+            'foto_dokumen' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $angkut = Bongkar::find($id);
+
+        if (!$angkut) {
+            return redirect()->back()->with('error', 'Data not found!');
+        }
+
+        // Handle camera-captured image (Base64)
+        if ($request->captured_image) {
+            $image = str_replace('data:image/png;base64,', '', $request->captured_image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = 'dokumen_' . time() . '_' . Str::random(10) . '.png';
+
+            Storage::disk('public')->put("upload/images/dokumen/$imageName", base64_decode($image));
+
+            $angkut->update(['foto_dokumen' => "upload/images/dokumen/$imageName"]);
+        }
+
+        // Handle file upload
+        if ($request->hasFile('foto_dokumen')) {
+            $file = $request->file('foto_dokumen');
+            $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('upload/images/dokumen', $fileName, 'public');
+
+            $angkut->update(['foto_dokumen' => $path]);
+        }
+
+        return redirect()->back()->with('success', 'Dokumen uploaded successfully!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'sopir_nama'   => 'required',
+            'sopir_nik'    => 'required',
+            'sopir_tlp'    => 'required',
+            'nopol_mobil'  => 'required',
+            'supplier'     => 'required',
+            'tgl_sj'       => 'required|date',
+            'no_sj'        => 'required',
+            'nama_barang'  => 'required',
+            'keterangan'   => 'required',
+            'empty_out'    => 'required|boolean',
+            'waktu_out'    => 'required'
+        ]);
+
+        // search id 
+        $bongkar = Bongkar::findOrFail($id);
+
+
+        // Update data
+        $bongkar->update($request->all());;
+
+        return redirect()->route('bongkar.index')->with(['success' => 'Data has been updated']);
+    }
+
+    public function destroy($id)
+    {
+        // Cari data berdasarkan ID
+        $bongkar = Bongkar::findOrFail($id);
+
+        // Hapus data
+        $bongkar->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('bongkar.index')->with(['success' => 'Data has been deleted']);
     }
 }

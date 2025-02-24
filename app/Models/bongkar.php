@@ -15,12 +15,7 @@ class bongkar extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
-    protected $fillable = ['id', 'tgl_masuk', 'sopir_nama', 'sopir_nik', 'sopir_tlp', 'nopol_mobil', 'supplier', 'tgl_sj', 'no_sj', 'nama_barang', 'keterangan', 'foto_sim', 'foto_stnk', 'empty_in', 'empty_out'];
-
-    public $timestamps = true;
-
-    const CREATED_AT = 'waktu_in';
-    const UPDATED_AT = 'waktu_out';
+    protected $fillable = ['id', 'tgl_masuk', 'sopir_nama', 'sopir_nik', 'sopir_tlp', 'nopol_mobil', 'supplier', 'tgl_sj', 'no_sj', 'nama_barang', 'keterangan', 'foto_sim', 'foto_stnk', 'foto_dokumen', 'empty_in', 'empty_out', 'waktu_in', 'waktu_out'];
 
     public function setID()
     {

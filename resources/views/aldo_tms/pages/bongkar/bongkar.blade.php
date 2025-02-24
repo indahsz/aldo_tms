@@ -11,7 +11,7 @@
         data-bs-target="#basicModal">
         + Tambah
     </button>
-    <!-- Tabel Angkut -->
+    <!-- Tabel bongkar -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
 
@@ -53,19 +53,50 @@
                         <td>{{ $item->no_sj}} </td>
                         <td>{{ $item->nama_barang}} </td>
                         <td>{{ $item->keterangan}} </td>
-                        <td>{{ $item->foto_sim}} </td>
-                        <td>{{ $item->foto_stnk}} </td>
-                        <td>{{ $item->foto_dokumen}} </td>
+                        <td class="text-center align-middle">
+                            <button type="button" class="btn btn-primary upload-sim-btn" data-bs-toggle="modal"
+                                data-bs-target="#upload-sim" data-id="{{ $item->id }}">
+                                +
+                            </button>
+                            <a href="{{ asset('storage/' . $item->foto_sim) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $item->foto_sim) }}" alt="Foto SIM" width="50"
+                                    height="50" class="rounded img-thumbnail">
+                            </a>
+                        </td>
+                        <td class="text-center align-middle">
+                            <button type="button" class="btn btn-primary upload-stnk-btn" data-bs-toggle="modal"
+                                data-bs-target="#upload-stnk" data-id="{{ $item->id }}">
+                                +
+                            </button>
+                            <a href="{{ asset('storage/' . $item->foto_stnk) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $item->foto_stnk) }}" alt="Foto SIM" width="50"
+                                    height="50" class="rounded img-thumbnail">
+                            </a>
+                        </td>
+                        <td class="text-center align-middle">
+                            <button type="button" class="btn btn-primary upload-dokumen-btn" data-bs-toggle="modal"
+                                data-bs-target="#upload-dokumen" data-id="{{ $item->id }}">
+                                +
+                            </button>
+                            <a href="{{ asset('storage/' . $item->foto_dokumen) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $item->foto_dokumen) }}" alt="Foto SIM"
+                                    width="50" height="50" class="rounded img-thumbnail">
+                            </a>
+                        </td>
                         <td>{{ $item->waktu_in}} </td>
                         <td>{{ $item->waktu_out}} </td>
                         <td>
                             <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#update-data{{ $item->id }}">
+                                        <i class="bx bx-edit-alt me-1"></i> Update
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#delete-data{{ $item->id }}"><i
+                                            class="bx bx-trash me-1"></i> Delete</a>
                                 </div>
                             </div>
                         </td>
@@ -78,6 +109,11 @@
     <!--/ Hoverable Table rows -->
 </div>
 
+@include('aldo_tms.pages.bongkar.modals.upload-sim')
+@include('aldo_tms.pages.bongkar.modals.upload-stnk')
+@include('aldo_tms.pages.bongkar.modals.upload-dokumen')
 @include('aldo_tms.pages.bongkar.modals.tambah')
+@include('aldo_tms.pages.bongkar.modals.update')
+@include('aldo_tms.pages.bongkar.modals.delete')
 
 @endsection
