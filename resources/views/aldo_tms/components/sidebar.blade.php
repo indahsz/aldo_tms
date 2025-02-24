@@ -62,27 +62,25 @@
 
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item active">
-      <a href="/" class="menu-link">
+    <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
+      <a href="{{ route('home') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Menu</span>
-    </li>
-    <li class="menu-item">
+    
+    <li class="menu-item {{ request()->routeIs('angkut.index') || request()->routeIs('bongkar.index') ? 'active open' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
         <div data-i18n="Account Settings">Transaksi</div>
       </a>
       <ul class="menu-sub">
-        <li class="menu-item">
+        <li class="menu-item {{ request()->routeIs('angkut.index') ? 'active' : '' }}">
           <a href="{{ route('angkut.index') }}" class="menu-link">
             <div data-i18n="Account">Angkut</div>
           </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ request()->routeIs('bongkar.index') ? 'active' : '' }}">
           <a href="{{ route('bongkar.index') }}" class="menu-link">
             <div data-i18n="Notifications">Bongkar</div>
           </a>
