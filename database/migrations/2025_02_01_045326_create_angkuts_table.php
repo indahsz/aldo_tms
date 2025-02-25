@@ -14,16 +14,18 @@ return new class extends Migration
         Schema::create('angkuts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->date('tgl_masuk');
+            $table->string('kode_trans');
             $table->string('sopir_nama');
-            $table->string('sopir_nik');
-            $table->string('sopir_tlp');
+            $table->string('sopir_nik')->nullable();
+            $table->string('sopir_tlp')->nullable();
             $table->string('transporter');
             $table->string('nopol_mobil');
-            $table->string('customer');
-            $table->date('tgl_sj');
-            $table->string('no_sj');
-            $table->string('nama_barang');
-            $table->string('keterangan');
+            $table->string('customer')->nullable();
+            $table->date('tgl_sj')->nullable();
+            $table->string('no_sj')->nullable();
+            $table->string('nama_barang')->nullable();
+            $table->string('ket_in')->nullable();
+            $table->string('ket_out')->nullable();
             $table->string('foto_sim')->nullable();
             $table->string('foto_stnk')->nullable();
             $table->string('foto_dokumen')->nullable();
@@ -34,6 +36,8 @@ return new class extends Migration
             $table->string('user_updated')->nullable();
             $table->dateTime('waktu_in')->nullable();
             $table->dateTime('waktu_out')->nullable();
+            $table->dateTime('muat_start')->nullable();
+            $table->dateTime('muat_stop')->nullable();
             $table->timestamps();
         });
     }

@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('bongkars', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('kode_trans')->unique();
             $table->date('tgl_masuk');
             $table->string('sopir_nama');
-            $table->string('sopir_nik');
-            $table->string('sopir_tlp');
+            $table->string('sopir_nik')->nullable();
+            $table->string('sopir_tlp')->nullable();
             $table->string('nopol_mobil');
             $table->string('supplier');
             $table->date('tgl_sj');
             $table->string('no_sj');
             $table->string('nama_barang');
-            $table->string('keterangan');
+            $table->string('ket_in')->nullable();
+            $table->string('ket_out')->nullable();
             $table->string('foto_sim')->nullable();
             $table->string('foto_stnk')->nullable();
             $table->string('foto_dokumen')->nullable();
@@ -32,6 +34,8 @@ return new class extends Migration
             $table->string('user_updated')->nullable();
             $table->dateTime('waktu_in')->nullable();
             $table->dateTime('waktu_out')->nullable();
+            $table->dateTime('bongkar_start')->nullable();
+            $table->dateTime('bongkar_stop')->nullable();
             $table->timestamps();
         });
     }

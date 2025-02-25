@@ -21,16 +21,13 @@ class AngkutController extends Controller
     {
         $this->validate($request, [
             'tgl_masuk'    => 'required|date',
+            'kode_trans'   => 'required',
             'sopir_nama'   => 'required',
             'sopir_nik'    => 'required',
             'sopir_tlp'    => 'required',
             'transporter'  => 'required',
             'nopol_mobil'  => 'required',
-            'customer'     => 'required',
-            'tgl_sj'       => 'required|date',
-            'no_sj'        => 'required',
-            'nama_barang'  => 'required',
-            'keterangan'   => 'required',
+            'ket_in'       => 'required',
             'safety_check' => 'required|boolean',
             'empty_in'     => 'required|boolean',
             'waktu_in'     => 'required'
@@ -39,16 +36,13 @@ class AngkutController extends Controller
         // Simpan data ke database
         Angkut::create([
             'tgl_masuk'    => $request->tgl_masuk,
+            'kode_trans'   => $request->kode_trans,
             'sopir_nama'   => $request->sopir_nama,
             'sopir_nik'    => $request->sopir_nik,
             'sopir_tlp'    => $request->sopir_tlp,
             'transporter'  => $request->transporter,
             'nopol_mobil'  => $request->nopol_mobil,
-            'customer'     => $request->customer,
-            'tgl_sj'       => $request->tgl_sj,
-            'no_sj'        => $request->no_sj,
-            'nama_barang'  => $request->nama_barang,
-            'keterangan'   => $request->keterangan,
+            'ket_in'       => $request->ket_in,
             'safety_check' => $request->safety_check,
             'empty_in'     => $request->empty_in,
             'waktu_in'     => $request->waktu_in
@@ -170,19 +164,10 @@ class AngkutController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'sopir_nama'   => 'required',
-            'sopir_nik'    => 'required',
-            'sopir_tlp'    => 'required',
-            'transporter'  => 'required',
-            'nopol_mobil'  => 'required',
             'customer'     => 'required',
             'tgl_sj'       => 'required|date',
             'no_sj'        => 'required',
             'nama_barang'  => 'required',
-            'keterangan'   => 'required',
-            'safety_check' => 'required|boolean',
-            'empty_out'    => 'required|boolean',
-            'waktu_out'    => 'required'
         ]);
 
         // search id 

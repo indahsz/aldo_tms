@@ -10,18 +10,19 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Hello IndahSZ 🎉</h5>
                             <p class="mb-4">
-                                Selamat datang di website <span class="fw-bold">Menu Transaksi</span> Jika ingin memasukan data
+                                Selamat datang di <span class="fw-bold">ALGATE</span>.
+                                Aplikasi berbasis web untuk pendataan masuk-keluar kendaraan (angkutan) yang melewati gerbang PT Alkindo Naratama Tbk.
                             </p>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4">
                             <img
-                                src="../assets/img/illustrations/man-with-laptop-light.png"
+                                src="../assets/img/illustrations/img_fleet.png"
                                 height="140"
                                 alt="View Badge User"
-                                data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                data-app-light-img="illustrations/man-with-laptop-light.png" />
+                                data-app-dark-img="illustrations/img_fleet.png"
+                                data-app-light-img="illustrations/img_fleet.png" />
                         </div>
                     </div>
                 </div>

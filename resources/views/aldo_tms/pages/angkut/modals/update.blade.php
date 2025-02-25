@@ -12,11 +12,29 @@
                     @method('PUT')
                     <div class="row mt-3">
                         <div class="col-3">
+                            <label for="kode_trans" class="col-form-label">Kode Transaksi</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" id="kode_trans" name="kode_trans" class="form-control"
+                                value="{{ $item->kode_trans }}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="tgl_masuk" class="col-form-label">Tgl Masuk</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control"
+                                value="{{ $item->tgl_masuk }}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
                             <label for="sopir_nama" class="col-form-label">Nama Sopir</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="sopir_nama" name="sopir_nama" class="form-control"
-                                value="{{ $item->sopir_nama }}" required>
+                                value="{{ $item->sopir_nama }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -25,7 +43,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="sopir_nik" name="sopir_nik" class="form-control"
-                                value="{{ $item->sopir_nik }}" required>
+                                value="{{ $item->sopir_nik }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -34,7 +52,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="sopir_tlp" name="sopir_tlp" class="form-control"
-                                value="{{ $item->sopir_tlp }}" required>
+                                value="{{ $item->sopir_tlp }}" readonly>
                         </div>
                     </div>
 
@@ -44,7 +62,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="transporter" name="transporter" class="form-control"
-                                value="{{ $item->transporter }}" required>
+                                value="{{ $item->transporter }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -53,7 +71,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="nopol_mobil" name="nopol_mobil" class="form-control"
-                                value="{{ $item->nopol_mobil }}" required>
+                                value="{{ $item->nopol_mobil }}" readonly>
                         </div>
                     </div>
 
@@ -96,23 +114,11 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="keterangan" class="col-form-label">Keterangan</label>
+                            <label for="ket_out" class="col-form-label">Ket. Keluar</label>
                         </div>
                         <div class="col-9">
-                            <input class="form-control" id="keterangan" name="keterangan" class="form-control"
-                                value="{{ $item->keterangan }}" required>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="safety_check" class="col-form-label">Kelengkapan</label>
-                        </div>
-                        <div class="col-9">
-                            <select class="form-select" name="safety_check" id="safety_check">
-                                <option value="1">Lengkap</option>
-                                <option value="0">Tidak Lengkap</option>
-                            </select>
+                            <input class="form-control" id="ket_out" name="ket_out" class="form-control"
+                                value="{{ $item->ket_out }}" required>
                         </div>
                     </div>
 
@@ -125,6 +131,24 @@
                                 <option value="0">Kosong</option>
                                 <option value="1">Terisi</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="muat_start" class="col-form-label">Mulai Muat</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="datetime-local" class="form-control" id="muat_start" name="muat_start"
+                                value="{{ $item->muat_start }}" required>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="muat_stop" class="col-form-label">Selesai Muat</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="datetime-local" class="form-control" id="muat_stop" name="muat_stop"
+                                value="{{ $item->muat_stop }}" required>
                         </div>
                     </div>
                     <div class="row mt-3">
