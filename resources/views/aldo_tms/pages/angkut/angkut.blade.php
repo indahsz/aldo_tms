@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Transaksi /</span> Angkut Barang</h4>
     <td><button type="button" class="mb-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-            + Angkutan Masuk
+            + Mobil Masuk
         </button></td>
     <td><button type="button" class="mb-4 btn btn-primary">
             + Mulai Muat
@@ -12,8 +12,8 @@
     <td><button type="button" class="mb-4 btn btn-primary">
             + Selesai Muat
         </button></td>
-    <td><button type="button" class="mb-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-            + Angkutan Keluar
+    <td><button type="button" class="mb-4 btn btn-primary">
+            + Mobil Keluar
         </button></td>
     <!-- Tabel Angkut -->
     <div class="card">
@@ -25,12 +25,13 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Kode Transaksi</th>
+                        <th>No. Transaksi</th>
                         <th>Tgl Masuk</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
                         <th>Transporter</th>
+                        <th>Armada</th>
                         <th>Plat Mobil</th>
                         <th>Customer</th>
                         <th>Tanggal SJ</th>
@@ -45,7 +46,7 @@
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
                         <th>Mulai Muat</th>
-                        <th>Akhir Muat</th>
+                        <th>Selesai Muat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -60,6 +61,7 @@
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->transporter }} </td>
+                        <td>{{ $item->armada }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->customer }} </td>
                         <td>{{ $item->tgl_sj }} </td>

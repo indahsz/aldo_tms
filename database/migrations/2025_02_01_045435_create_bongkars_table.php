@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('foto_sim')->nullable();
             $table->string('foto_stnk')->nullable();
             $table->string('foto_dokumen')->nullable();
-            $table->boolean('empty_in')->default(false);
-            $table->boolean('empty_out')->default(true);
+            $table->string('empty_in');
+            $table->string('empty_out');
             $table->string('user_created')->nullable();
             $table->string('user_updated')->nullable();
             $table->dateTime('waktu_in')->nullable();

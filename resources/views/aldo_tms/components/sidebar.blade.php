@@ -68,7 +68,7 @@
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
-    
+
     <li class="menu-item {{ request()->routeIs('angkut.index') || request()->routeIs('bongkar.index') ? 'active open' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-dock-top"></i>
@@ -86,6 +86,14 @@
           </a>
         </li>
       </ul>
+    </li>
+
+    <li class="menu-item ">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+        <div data-i18n="Account Settings">Laporan Data</div>
+      </a>
+
     </li>
   </ul>
 </aside>

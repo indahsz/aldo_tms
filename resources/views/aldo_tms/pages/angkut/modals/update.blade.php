@@ -55,7 +55,15 @@
                                 value="{{ $item->sopir_tlp }}" readonly>
                         </div>
                     </div>
-
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="armada" class="col-form-label">Armada</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" id="armada" name="armada" class="form-control"
+                                value="{{ $item->armada }}" readonly>
+                        </div>
+                    </div>
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="transporter" class="col-form-label">Transporter</label>
@@ -81,7 +89,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="customer" name="customer" class="form-control"
-                                value="{{ $item->customer }}" required>
+                                value="{{ $item->customer }}" placeholder="Masukkan Customer" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -99,7 +107,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="no_sj" name="no_sj" class="form-control"
-                                value="{{ $item->no_sj }}" required>
+                                value="{{ $item->no_sj }}" placeholder="Masukkan No. SJ" required>
                         </div>
                     </div>
 
@@ -109,7 +117,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="nama_barang" name="nama_barang" class="form-control"
-                                value="{{ $item->nama_barang }}" required>
+                                value="{{ $item->nama_barang }}" placeholder="Masukkan Nama Barang" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -118,18 +126,19 @@
                         </div>
                         <div class="col-9">
                             <input class="form-control" id="ket_out" name="ket_out" class="form-control"
-                                value="{{ $item->ket_out }}" required>
+                                value="{{ $item->ket_out }}" placeholder="Masukkan Keterangan" required>
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="empty_out" class="col-form-label">Mobil Terisi?</label>
+                            <label for="empty_out" class="col-form-label">Kondisi Mobil</label>
                         </div>
                         <div class="col-9">
                             <select class="form-select" name="empty_out" id="empty_out">
-                                <option value="0">Kosong</option>
-                                <option value="1">Terisi</option>
+                                <option value="-">--Pilih--</option>
+                                <option value="Ya">Ya (Kosong)</option>
+                                <option value="Tidak">Tidak (Terisi)</option>
                             </select>
                         </div>
                     </div>

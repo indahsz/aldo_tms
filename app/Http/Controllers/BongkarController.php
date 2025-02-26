@@ -12,47 +12,50 @@ class BongkarController extends Controller
 {
     public function index()
     {
-        $data = bongkar::paginate(20);
+        $data = bongkar::paginate(10);
         return view('aldo_tms/pages/bongkar/bongkar', compact('data'));
     }
+
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'tgl_masuk'    => 'required|date',
+            'kode_trans'   => 'required',
             'sopir_nama'   => 'required',
             'sopir_nik'    => 'required',
             'sopir_tlp'    => 'required',
             'nopol_mobil'  => 'required',
             'supplier'     => 'required',
-            'tgl_sj'       => 'required|date',
             'no_sj'        => 'required',
+            'tgl_sj'       => 'required|date',
             'nama_barang'  => 'required',
-            'keterangan'   => 'required',
-            'foto_sim'     => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'foto_stnk'    => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'empty_in'     => 'required|boolean',
-            'waktu_in'     => 'required',
+            'ket_in'       => 'required',
+            'empty_in'     => 'required',
+            'waktu_in'     => 'required'
         ]);
 
         // Simpan data ke database
-        bongkar::create([
+        Bongkar::create([
             'tgl_masuk'    => $request->tgl_masuk,
+            'kode_trans'   => $request->kode_trans,
             'sopir_nama'   => $request->sopir_nama,
             'sopir_nik'    => $request->sopir_nik,
             'sopir_tlp'    => $request->sopir_tlp,
             'nopol_mobil'  => $request->nopol_mobil,
             'supplier'     => $request->supplier,
-            'tgl_sj'       => $request->tgl_sj,
             'no_sj'        => $request->no_sj,
+            'tgl_sj'       => $request->tgl_sj,
             'nama_barang'  => $request->nama_barang,
-            'keterangan'   => $request->keterangan,
+            'ket_in'       => $request->ket_in,
+            'safety_check' => $request->safety_check,
             'empty_in'     => $request->empty_in,
             'waktu_in'     => $request->waktu_in
         ]);
 
         return redirect()->route('bongkar.index')->with(['success' => 'Data has been added']);
     }
+
     public function uploadSim(Request $request, $id)
     {
         $request->validate([
@@ -165,19 +168,7 @@ class BongkarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'sopir_nama'   => 'required',
-            'sopir_nik'    => 'required',
-            'sopir_tlp'    => 'required',
-            'nopol_mobil'  => 'required',
-            'supplier'     => 'required',
-            'tgl_sj'       => 'required|date',
-            'no_sj'        => 'required',
-            'nama_barang'  => 'required',
-            'keterangan'   => 'required',
-            'empty_out'    => 'required|boolean',
-            'waktu_out'    => 'required'
-        ]);
+        $this->validate($request, []);
 
         // search id 
         $bongkar = Bongkar::findOrFail($id);

@@ -12,10 +12,15 @@ class AngkutController extends Controller
 {
     public function index()
     {
-        $data = angkut::paginate(5);
+        $data = angkut::paginate(10);
         return view('aldo_tms/pages/angkut/angkut', compact('data'));
     }
 
+    function generateCode()
+    {
+        $newcode = 'CU' . now()->format('YmdHis') . strtoupper(str()->random(6));
+        return $newcode;
+    }
 
     public function store(Request $request)
     {
@@ -26,21 +31,25 @@ class AngkutController extends Controller
             'sopir_nik'    => 'required',
             'sopir_tlp'    => 'required',
             'transporter'  => 'required',
+            'armada'       => 'required',
             'nopol_mobil'  => 'required',
             'ket_in'       => 'required',
-            'safety_check' => 'required|boolean',
-            'empty_in'     => 'required|boolean',
+            'safety_check' => 'required',
+            'empty_in'     => 'required',
             'waktu_in'     => 'required'
         ]);
 
         // Simpan data ke database
+
         Angkut::create([
+
             'tgl_masuk'    => $request->tgl_masuk,
             'kode_trans'   => $request->kode_trans,
             'sopir_nama'   => $request->sopir_nama,
             'sopir_nik'    => $request->sopir_nik,
             'sopir_tlp'    => $request->sopir_tlp,
             'transporter'  => $request->transporter,
+            'armada'       => $request->armada,
             'nopol_mobil'  => $request->nopol_mobil,
             'ket_in'       => $request->ket_in,
             'safety_check' => $request->safety_check,
