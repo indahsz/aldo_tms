@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class BongkarController extends Controller
 {
     public function index()
     {
         $data = bongkar::paginate(20);
-        return view('aldo_tms/pages/bongkar/bongkar', compact('data'));
+        $users = User::all(); // Fetch all users
+        return view('aldo_tms/pages/bongkar/bongkar', compact('data', 'users'));
     }
 
     public function store(Request $request)

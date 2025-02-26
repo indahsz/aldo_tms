@@ -53,7 +53,7 @@
       <span class="app-brand-text demo menu-text fw-bolder ms-2">algate</span>
     </a>
 
-    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+    <a href="{{ route('dashboard') }}" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
     </a>
   </div>
@@ -62,8 +62,8 @@
 
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
-      <a href="{{ route('home') }}" class="menu-link">
+    <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+      <a href="{{ route('dashboard') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
       </a>
@@ -87,5 +87,25 @@
         </li>
       </ul>
     </li>
-  </ul>
+
+    <li class="menu-item {{ request()->routeIs('laporanAngkut.index') || request()->routeIs('bongkar.index') ? 'active open' : '' }}">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-report"></i>
+        <div data-i18n="Account Settings">Laporan</div>
+      </a>
+      <ul class="menu-sub">
+        <li class="menu-item {{ request()->routeIs('laporanAngkut.index') ? 'active' : '' }}">
+          <a href="{{ route('laporanAngkut.index') }}" class="menu-link">
+            <div data-i18n="Account">Angkut</div>
+          </a>
+        </li>
+        <li class="menu-item {{ request()->routeIs('bongkar.index') ? 'active' : '' }}">
+          <a href="{{ route('bongkar.index') }}" class="menu-link">
+            <div data-i18n="Notifications">Bongkar</div>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+
 </aside>

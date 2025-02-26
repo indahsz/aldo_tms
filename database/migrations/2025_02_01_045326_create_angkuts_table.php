@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('angkuts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->date('tgl_masuk');
-            $table->string('kode_trans');
-            $table->string('sopir_nama');
+            $table->string('kode_trans')->nullable();
+            $table->string('sopir_nama')->nullable();
             $table->string('sopir_nik')->nullable();
             $table->string('sopir_tlp')->nullable();
-            $table->string('transporter');
-            $table->string('nopol_mobil');
+            $table->string('transporter')->nullable();
+            $table->string('nopol_mobil')->nullable();
             $table->string('customer')->nullable();
             $table->date('tgl_sj')->nullable();
             $table->string('no_sj')->nullable();

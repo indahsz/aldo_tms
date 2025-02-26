@@ -22,9 +22,9 @@
                             <label for="kode_trans" class="col-form-label">No. Transaksi</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="kode_trans" name="kode_trans" class="form-control" required>
+                            <input type="text" id="kode_trans" name="kode_trans" class="form-control" value="{{ $kodeTrans }}" readonly>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="sopir_nama" class="col-form-label">Nama Sopir</label>
