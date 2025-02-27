@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('home', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**
@@ -38,10 +38,15 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
+        // Hapus session
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
+
+        // Bersihkan cache (opsional)
+        \Artisan::call('cache:clear');
+        \Artisan::call('config:clear');
 
         return redirect()->route('login');
     }
+
 }

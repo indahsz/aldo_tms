@@ -15,7 +15,11 @@ class angkut extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
+<<<<<<< HEAD
     protected $fillable = ['id', 'kode_trans', 'tgl_masuk', 'sopir_nama', 'sopir_nik', 'sopir_tlp', 'transporter', 'armada', 'nopol_mobil', 'customer', 'tgl_sj', 'no_sj', 'nama_barang', 'ket_in', 'ket_out', 'safety_check', 'empty_in', 'empty_out', 'foto_sim', 'foto_dokumen', 'foto_stnk', 'waktu_in', 'waktu_out', 'muat_start', 'muat_stop'];
+=======
+    protected $fillable = ['id', 'kode_trans', 'tgl_masuk', 'sopir_nama', 'sopir_nik', 'sopir_tlp', 'transporter', 'nopol_mobil', 'customer', 'tgl_sj', 'no_sj', 'nama_barang', 'ket_in', 'ket_out', 'safety_check', 'empty_in', 'empty_out', 'foto_sim', 'foto_dokumen', 'foto_stnk', 'waktu_in', 'waktu_out', 'muat_start', 'muat_stop', 'user_created', 'user_updated'];
+>>>>>>> a690ed330e9888b929c01eda5c8387ed32b19d7a
 
     public function setID()
     {

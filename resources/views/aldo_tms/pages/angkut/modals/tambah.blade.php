@@ -22,10 +22,14 @@
                             <label for="kode_trans" class="col-form-label">No. Transaksi</label>
                         </div>
                         <div class="col-9">
+<<<<<<< HEAD
                             <input type="text" id="kode_trans" name="kode_trans" class="form-control"
                                 placeholder="Terisi Otomatis" required>
+=======
+                            <input type="text" id="kode_trans" name="kode_trans" class="form-control" value="{{ $kodeTrans }}" readonly>
+>>>>>>> a690ed330e9888b929c01eda5c8387ed32b19d7a
                         </div>
-                    </div>
+                    </div>                    
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="sopir_nama" class="col-form-label">Nama Sopir</label>
