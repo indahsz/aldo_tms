@@ -24,13 +24,13 @@
                         <div class="col-9">
                             <input type="text" id="kode_trans" name="kode_trans" class="form-control" value="{{ $kodeTrans }}" readonly>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="sopir_nama" class="col-form-label">Nama Sopir</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="sopir_nama" name="sopir_nama" class="form-control" required>
+                            <input type="text" id="sopir_nama" name="sopir_nama" class="form-control" placeholder="Masukkan Nama Lengkap" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -38,7 +38,7 @@
                             <label for="sopir_nik" class="col-form-label">NIK Sopir</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="sopir_nik" name="sopir_nik" class="form-control" required>
+                            <input type="text" id="sopir_nik" name="sopir_nik" class="form-control" placeholder="Masukkan NIK" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -46,16 +46,27 @@
                             <label for="sopir_tlp" class="col-form-label">Tlp Sopir</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="sopir_tlp" name="sopir_tlp" class="form-control" required>
+                            <input type="text" id="sopir_tlp" name="sopir_tlp" class="form-control" placeholder="Masukkan No Tlp" required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="transporter" class="col-form-label">Transporter</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="transporter" name="transporter" class="form-control" required>
+                            <select class="form-select" name="transporter" id="transporter">
+                                <option value="-">--Pilih--</option>
+                                <option value="Internal">Kendaraan Internal</option>
+                                <option value="Eksternal">Kendaraan Eksternal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="armada" class="col-form-label">Armada</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" id="armada" name="armada" class="form-control" placeholder="Masukkan Armada" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -63,39 +74,42 @@
                             <label for="nopol_mobil" class="col-form-label">Nopol Mobil</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="nopol_mobil" name="nopol_mobil" class="form-control" required>
+                            <input type="text" id="nopol_mobil" name="nopol_mobil" class="form-control"
+                                placeholder="Masukkan Plat Mobil" required>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="keterangan" class="col-form-label">Ket. Masuk</label>
+                            <label for="ket_in" class="col-form-label">Ket. Masuk</label>
                         </div>
                         <div class="col-9">
                             <input class="form-control" id="ket_in" name="ket_in" class="form-control"
+                                placeholder="Masukkan Keterangan"
                                 required>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="safety_check" class="col-form-label">Kelengkapan</label>
                         </div>
                         <div class="col-9">
                             <select class="form-select" name="safety_check" id="safety_check">
-                                <option value="1">Lengkap</option>
-                                <option value="0">Tidak Lengkap</option>
+                                <option value="-">--Pilih--</option>
+                                <option value="Lengkap">Lengkap</option>
+                                <option value="Tidak Lengkap">Tidak Lengkap</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="empty_in" class="col-form-label">Mobil Terisi?</label>
+                            <label for="empty_in" class="col-form-label">Mobil Kosong?</label>
                         </div>
                         <div class="col-9">
                             <select class="form-select" name="empty_in" id="empty_in">
-                                <option value="0">Kosong</option>
-                                <option value="1">Terisi</option>
+                                <option value="-">--Pilih--</option>
+                                <option value="Ya">Ya (Kosong)</option>
+                                <option value="Tidak">Tidak (Terisi)</option>
                             </select>
                         </div>
                     </div>

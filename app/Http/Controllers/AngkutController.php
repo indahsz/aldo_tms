@@ -8,6 +8,8 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class AngkutController extends Controller
 {
@@ -18,48 +20,50 @@ class AngkutController extends Controller
         $users = User::all(); // Fetch all users
         return view('aldo_tms.pages.angkut.angkut', compact('data', 'kodeTrans', 'users'));
     }
-    
+
 
     public function store(Request $request)
-{
-    $this->validate($request, [
-        'tgl_masuk'    => 'required|date',
-        'kode_trans'   => 'required',
-        'sopir_nama'   => 'required',
-        'sopir_nik'    => 'required',
-        'sopir_tlp'    => 'required',
-        'transporter'  => 'required',
-        'nopol_mobil'  => 'required',
-        'ket_in'       => 'required',
-        'safety_check' => 'required|boolean',
-        'empty_in'     => 'required|boolean',
-        'waktu_in'     => 'required'
-    ]);
+    {
+        $this->validate($request, [
+            'tgl_masuk'    => 'required|date',
+            'kode_trans'   => 'required',
+            'sopir_nama'   => 'required',
+            'sopir_nik'    => 'required',
+            'sopir_tlp'    => 'required',
+            'transporter'  => 'required',
+            'armada'       => 'required',
+            'nopol_mobil'  => 'required',
+            'ket_in'       => 'required',
+            'safety_check' => 'required',
+            'empty_in'     => 'required|',
+            'waktu_in'     => 'required'
+        ]);
 
-    // Get the currently logged-in user
-    $userName = auth()->user()->name; 
+        // Get the currently logged-in user
+        $userName = Auth::user()->name;
 
-    // Generate kode_trans
-    $kodeTrans = generateKodeTrans();
+        // Generate kode_trans
+        $kodeTrans = generateKodeTrans();
 
-    // Save data to database
-    Angkut::create([
-        'tgl_masuk'    => $request->tgl_masuk,
-        'kode_trans'   => $kodeTrans,
-        'sopir_nama'   => $request->sopir_nama,
-        'sopir_nik'    => $request->sopir_nik,
-        'sopir_tlp'    => $request->sopir_tlp,
-        'transporter'  => $request->transporter,
-        'nopol_mobil'  => $request->nopol_mobil,
-        'ket_in'       => $request->ket_in,
-        'safety_check' => $request->safety_check,
-        'empty_in'     => $request->empty_in,
-        'waktu_in'     => $request->waktu_in,
-        'user_created' => $userName, // Store user_created
-    ]);
+        // Save data to database
+        Angkut::create([
+            'tgl_masuk'    => $request->tgl_masuk,
+            'kode_trans'   => $kodeTrans,
+            'sopir_nama'   => $request->sopir_nama,
+            'sopir_nik'    => $request->sopir_nik,
+            'sopir_tlp'    => $request->sopir_tlp,
+            'transporter'  => $request->transporter,
+            'armada'       => $request->armada,
+            'nopol_mobil'  => $request->nopol_mobil,
+            'ket_in'       => $request->ket_in,
+            'safety_check' => $request->safety_check,
+            'empty_in'     => $request->empty_in,
+            'waktu_in'     => $request->waktu_in,
+            'user_created' => $userName, // Store user_created
+        ]);
 
-    return redirect()->route('angkut.index')->with(['success' => 'Data has been added']);
-}
+        return redirect()->route('angkut.index')->with(['success' => 'Data has been added']);
+    }
 
 
     public function uploadSim(Request $request, $id)
@@ -180,17 +184,17 @@ class AngkutController extends Controller
             'no_sj'        => 'required',
             'nama_barang'  => 'required',
         ]);
-    
+
         $angkut = Angkut::findOrFail($id);
-        $userName = auth()->user()->name; // Get logged-in user's name
+        $userName = Auth::user()->name; // Get logged-in user's name
 
         $angkut->update(array_merge($request->all(), [
             'user_updated' => $userName, // Save name of the person who updated
         ]));
 
-    
+
         return redirect()->route('angkut.index')->with(['success' => 'Data has been updated']);
-    }    
+    }
 
     public function muatStart(Request $request, $id)
     {

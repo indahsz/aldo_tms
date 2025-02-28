@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">{{ Auth::user()->name }} 🎉</h5>
+                            <h5 class="card-title text-primary">Hai, {{ Auth::user()->name }} 👋</h5>
                             <p class="mb-4">
                                 Selamat datang di <span class="fw-bold">ALGATE</span>.
                                 Aplikasi berbasis web untuk pendataan masuk-keluar kendaraan (angkutan) yang melewati gerbang PT Alkindo Naratama Tbk.
@@ -36,5 +36,4 @@
         </div>
     </div>
 </div>
-
 @endsection

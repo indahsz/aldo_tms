@@ -103,11 +103,9 @@
 
   <div class="buy-now">
     <a
-      href="https://wa.me/628983121343?text=Hello%2C%20saya%20ada%20kendala%20di%20aplikasi%20ini "
+      href="https://wa.me/628983121343?text=Hello%2C%20saya%20ada%20kendala%20dengan%20aplikasi%20ini"
       target="_blank"
-      class="btn btn-danger btn-buy-now">
-      Chat IT
-    </a>
+      class="btn btn-danger btn-buy-now">Chat IT</a>
   </div>
 
 

@@ -12,11 +12,29 @@
                     @method('PUT')
                     <div class="row mt-3">
                         <div class="col-3">
+                            <label for="kode_trans" class="col-form-label">Kode Transaksi</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" id="kode_trans" name="kode_trans" class="form-control"
+                                value="{{ $item->kode_trans }}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <label for="tgl_masuk" class="col-form-label">Tgl Masuk</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control"
+                                value="{{ $item->tgl_masuk }}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
                             <label for="sopir_nama" class="col-form-label">Nama Sopir</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="sopir_nama" name="sopir_nama" class="form-control"
-                                value="{{ $item->sopir_nama }}" required>
+                                value="{{ $item->sopir_nama }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -25,7 +43,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="sopir_nik" name="sopir_nik" class="form-control"
-                                value="{{ $item->sopir_nik }}" required>
+                                value="{{ $item->sopir_nik }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -34,27 +52,26 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="sopir_tlp" name="sopir_tlp" class="form-control"
-                                value="{{ $item->sopir_tlp }}" required>
+                                value="{{ $item->sopir_tlp }}" readonly>
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-3">
                             <label for="nopol_mobil" class="col-form-label">Nopol Mobil</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="nopol_mobil" name="nopol_mobil" class="form-control"
-                                value="{{ $item->nopol_mobil }}" required>
+                                value="{{ $item->nopol_mobil }}" readonly>
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="supplier" class="col-form-label">Supplier</label>
+                            <label for="supplier" class="col-form-label">Customer</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="supplier" name="supplier" class="form-control"
-                                value="{{ $item->supplier }}" required>
+                                value="{{ $item->supplier }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -63,7 +80,7 @@
                         </div>
                         <div class="col-9">
                             <input type="date" class="form-control" id="tgl_sj" name="tgl_sj"
-                                value="{{ $item->tgl_sj }}" required>
+                                value="{{ $item->tgl_sj }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -72,7 +89,7 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="no_sj" name="no_sj" class="form-control"
-                                value="{{ $item->no_sj }}" required>
+                                value="{{ $item->no_sj }}" readonly>
                         </div>
                     </div>
 
@@ -82,47 +99,48 @@
                         </div>
                         <div class="col-9">
                             <input type="text" id="nama_barang" name="nama_barang" class="form-control"
-                                value="{{ $item->nama_barang }}" required>
+                                value="{{ $item->nama_barang }}" readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="keterangan" class="col-form-label">Keterangan</label>
+                            <label for="ket_out" class="col-form-label">Ket. Keluar</label>
                         </div>
                         <div class="col-9">
-                            <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required></textarea>
+                            <input class="form-control" id="ket_out" name="ket_out" class="form-control"
+                                value="{{ $item->ket_out }}" required>
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="empty_out" class="col-form-label">Mobil Terisi?</label>
+                            <label for="empty_out" class="col-form-label">Mobil Kosong?</label>
                         </div>
                         <div class="col-9">
                             <select class="form-select" name="empty_out" id="empty_out">
-                                <option value="0">Kosong</option>
-                                <option value="1">Terisi</option>
+                                <option value="-">--Pilih--</option>
+                                <option value="Ya">Ya (Kosong)</option>
+                                <option value="Tidak">Tidak (Terisi)</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="waktu_out" class="col-form-label">Keluar</label>
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <label for="waktu_out" class="col-form-label">Keluar</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="datetime-local" class="form-control" id="waktu_out" name="waktu_out"
+                                    value="{{ $item->waktu_out }}" required>
+                            </div>
                         </div>
-                        <div class="col-9">
-                            <input type="datetime-local" class="form-control" id="waktu_out" name="waktu_out"
-                                required>
-                        </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Tutup
+                        </button>
+                        <button type="submit" class="btn btn-primary">Update data</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Tutup
-                </button>
-                <button type="submit" class="btn btn-primary">Update data</button>
-            </div>
-            </form>
         </div>
     </div>
-</div>
-@endisset
+    @endisset

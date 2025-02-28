@@ -4,9 +4,9 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Transaksi /</span> Angkut Barang</h4>
     <button type="button" class="mb-4 btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-            + Angkutan Masuk
-        </button>
-    
+        + Angkutan Masuk
+    </button>
+
     <!-- Tabel Angkut -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
@@ -17,12 +17,13 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Kode Transaksi</th>
+                        <th>No. Transaksi</th>
                         <th>Tgl Masuk</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
                         <th>Transporter</th>
+                        <th>Armada</th>
                         <th>Plat Mobil</th>
                         <th>Customer</th>
                         <th>Tanggal SJ</th>
@@ -37,7 +38,7 @@
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
                         <th>Mulai Muat</th>
-                        <th>Akhir Muat</th>               
+                        <th>Akhir Muat</th>
                         <th>Muatan</th>
                         <th>Action</th>
                     </tr>
@@ -53,6 +54,7 @@
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->transporter }} </td>
+                        <td>{{ $item->armada }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->customer }} </td>
                         <td>{{ $item->tgl_sj ? \Carbon\Carbon::parse($item->tgl_sj)->format('d-m-Y') : '-' }}</td>
@@ -60,7 +62,7 @@
                         <td>{{ $item->nama_barang }} </td>
                         <td>{{ $item->ket_in }} </td>
                         <td>{{ $item->ket_out }} </td>
-                        <td >
+                        <td>
                             <button type="button" class="btn btn-primary upload-sim-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-sim" data-id="{{ $item->id }}">
                                 +
@@ -71,10 +73,10 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                                <p>No image available</p>
+                            <p>No image available</p>
                             @endif
                         </td>
-                        <td >
+                        <td>
                             <button type="button" class="btn btn-primary upload-stnk-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-stnk" data-id="{{ $item->id }}">
                                 +
@@ -85,7 +87,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                                <p>No image available</p>
+                            <p>No image available</p>
                             @endif
                         </td>
                         <td>
@@ -99,14 +101,14 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                                <p>No image available</p>
+                            <p>No image available</p>
                             @endif
                         </td>
                         <td>{{ $item->safety_check ? 'Lengkap' : 'Tidak Lengkap' }}</td>
-                        <td>{{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') : '-' }}</td>
-                        <td>{{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') : '-' }}</td>
-                        <td>{{ $item->muat_start }} </td>
-                        <td>{{ $item->muat_stop }} </td>
+                        <td>{{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }}</td>
+                        <td>{{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i') : '-' }}</td>
+                        <td>{{ $item->muat_start ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }} </td>
+                        <td>{{ $item->muat_stop ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }} </td>
                         <td>
                             <div class="d-flex gap-2">
                                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#muat-start{{ $item->id }}">
@@ -134,11 +136,11 @@
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-data{{ $item->id }}">
                                     <i class="bx bx-trash me-1"></i> Delete
                                 </button>
-                                
+
                                 @include('aldo_tms.pages.angkut.modals.delete')
 
-                            </div>                            
-                        </td>                       
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

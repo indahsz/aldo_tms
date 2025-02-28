@@ -42,11 +42,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // Bersihkan cache (opsional)
-        \Artisan::call('cache:clear');
-        \Artisan::call('config:clear');
-
         return redirect()->route('login');
     }
-
 }
