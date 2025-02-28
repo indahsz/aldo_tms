@@ -117,6 +117,8 @@
 
                                 @include('aldo_tms.pages.bongkar.modals.update-bongkar-done')
 
+
+
                             </div>
                         </td>
                         <td>
@@ -129,10 +131,9 @@
 
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-data{{ $item->id }}">
                                     <i class="bx bx-trash me-1"></i> Delete
-                                </button>
+                                </button>                                
 
-                                @include('aldo_tms.pages.bongkar.modals.delete')
-
+                                @include('aldo_tms.pages.bongkar.modals.delete')                    
                             </div>
                         </td>
                     </tr>

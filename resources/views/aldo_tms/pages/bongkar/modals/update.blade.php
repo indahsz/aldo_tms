@@ -143,4 +143,5 @@
             </div>
         </div>
     </div>
-    @endisset
+</div>
+@endisset
