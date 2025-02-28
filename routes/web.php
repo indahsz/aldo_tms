@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
     // Default route (redirected to after login)
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 // Profile management routes (require authentication)
 Route::middleware('auth')->group(function () {
+
     // Resource routes for 'angkut'
     Route::resource('angkut', AngkutController::class);
     Route::post('/angkut/uploadSim/{id}', [AngkutController::class, 'uploadSim'])->name('angkut.uploadSim');

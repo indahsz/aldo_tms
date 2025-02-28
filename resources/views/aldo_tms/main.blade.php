@@ -103,10 +103,13 @@
 
   <div class="buy-now">
     <a
-      href=""
-      target=""
-      class="btn btn-danger btn-buy-now">Chat IT</a>
+      href="https://wa.me/628983121343?text=Hello%2C%20saya%20ada%20kendala%20di%20aplikasi%20ini "
+      target="_blank"
+      class="btn btn-danger btn-buy-now">
+      Chat IT
+    </a>
   </div>
+
 
   <!-- Core JS -->
 
