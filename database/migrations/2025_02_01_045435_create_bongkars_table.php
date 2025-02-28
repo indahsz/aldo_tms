@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('foto_stnk')->nullable();
             $table->string('foto_dokumen')->nullable();
             $table->string('empty_in');
-            $table->string('empty_out');
+            $table->string('empty_out')->nullable();
             $table->string('user_created')->nullable();
             $table->string('user_updated')->nullable();
             $table->dateTime('waktu_in')->nullable();

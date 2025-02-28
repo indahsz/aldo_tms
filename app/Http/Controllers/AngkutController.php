@@ -8,6 +8,8 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class AngkutController extends Controller
 {
@@ -29,15 +31,16 @@ class AngkutController extends Controller
             'sopir_nik'    => 'required',
             'sopir_tlp'    => 'required',
             'transporter'  => 'required',
+            'armada'       => 'required',
             'nopol_mobil'  => 'required',
             'ket_in'       => 'required',
-            'safety_check' => 'required|boolean',
-            'empty_in'     => 'required|boolean',
+            'safety_check' => 'required',
+            'empty_in'     => 'required|',
             'waktu_in'     => 'required'
         ]);
 
         // Get the currently logged-in user
-        $userName = auth()->user()->name;
+        $userName = Auth::user()->name;
 
         // Generate kode_trans
         $kodeTrans = generateKodeTrans();
@@ -50,6 +53,7 @@ class AngkutController extends Controller
             'sopir_nik'    => $request->sopir_nik,
             'sopir_tlp'    => $request->sopir_tlp,
             'transporter'  => $request->transporter,
+            'armada'       => $request->armada,
             'nopol_mobil'  => $request->nopol_mobil,
             'ket_in'       => $request->ket_in,
             'safety_check' => $request->safety_check,
@@ -182,7 +186,7 @@ class AngkutController extends Controller
         ]);
 
         $angkut = Angkut::findOrFail($id);
-        $userName = auth()->user()->name; // Get logged-in user's name
+        $userName = Auth::user()->name; // Get logged-in user's name
 
         $angkut->update(array_merge($request->all(), [
             'user_updated' => $userName, // Save name of the person who updated

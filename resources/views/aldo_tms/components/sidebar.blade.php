@@ -88,17 +88,7 @@
       </ul>
     </li>
 
-<<<<<<< HEAD
-    <li class="menu-item ">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-dock-top"></i>
-        <div data-i18n="Account Settings">Laporan Data</div>
-      </a>
-
-    </li>
-  </ul>
-=======
-    <li class="menu-item {{ request()->routeIs('laporanAngkut.index') || request()->routeIs('bongkar.index') ? 'active open' : '' }}">
+    <li class="menu-item {{ request()->routeIs('laporanAngkut.index') || request()->routeIs('laporanBongkar.index') ? 'active open' : '' }}">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bxs-report"></i>
         <div data-i18n="Account Settings">Laporan</div>
@@ -109,8 +99,8 @@
             <div data-i18n="Account">Angkut</div>
           </a>
         </li>
-        <li class="menu-item {{ request()->routeIs('bongkar.index') ? 'active' : '' }}">
-          <a href="{{ route('bongkar.index') }}" class="menu-link">
+        <li class="menu-item {{ request()->routeIs('laporanBongkar.index') ? 'active' : '' }}">
+          <a href="{{ route('laporanBongkar.index') }}" class="menu-link">
             <div data-i18n="Notifications">Bongkar</div>
           </a>
         </li>
@@ -118,5 +108,4 @@
     </li>
 
 
->>>>>>> a690ed330e9888b929c01eda5c8387ed32b19d7a
 </aside>

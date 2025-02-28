@@ -18,14 +18,9 @@ return new class extends Migration
             $table->string('sopir_nama')->nullable();
             $table->string('sopir_nik')->nullable();
             $table->string('sopir_tlp')->nullable();
-<<<<<<< HEAD
-            $table->string('transporter');
-            $table->string('armada');
-            $table->string('nopol_mobil');
-=======
             $table->string('transporter')->nullable();
+            $table->string('armada')->nullable();
             $table->string('nopol_mobil')->nullable();
->>>>>>> a690ed330e9888b929c01eda5c8387ed32b19d7a
             $table->string('customer')->nullable();
             $table->date('tgl_sj')->nullable();
             $table->string('no_sj')->nullable();

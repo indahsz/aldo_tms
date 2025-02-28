@@ -123,43 +123,24 @@
                                 <option value="Tidak">Tidak (Terisi)</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="bongkar_start" class="col-form-label">Mulai Bongkar</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="datetime-local" class="form-control" id="bongkar_start" name="bongkar_start"
-                                value="{{ $item->bongkar_start }}" required>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="bongkar_stop" class="col-form-label">Selesai Bongkar</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="datetime-local" class="form-control" id="bongkar_stop" name="bongkar_stop"
-                                value="{{ $item->bongkar_stop }}" required>
+                        <div class="row mt-3">
+                            <div class="col-3">
+                                <label for="waktu_out" class="col-form-label">Keluar</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="datetime-local" class="form-control" id="waktu_out" name="waktu_out"
+                                    value="{{ $item->waktu_out }}" required>
+                            </div>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <label for="waktu_out" class="col-form-label">Keluar</label>
-                        </div>
-                        <div class="col-9">
-                            <input type="datetime-local" class="form-control" id="waktu_out" name="waktu_out"
-                                value="{{ $item->waktu_out }}" required>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Tutup
+                        </button>
+                        <button type="submit" class="btn btn-primary">Update data</button>
                     </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Tutup
-                </button>
-                <button type="submit" class="btn btn-primary">Update data</button>
-            </div>
-            </form>
         </div>
     </div>
-</div>
-@endisset
+    @endisset

@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Laporan Data /</span> Angkut Barang</h4>
-    <!-- Tabel Angkut -->
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Laporan Data /</span> Bongkar Barang</h4>
+    <!-- Tabel Bongkar -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
 
@@ -20,7 +20,7 @@
                         <th>Tlp</th>
                         <th>Transporter</th>
                         <th>Plat Mobil</th>
-                        <th>Customer</th>
+                        <th>Supplier</th>
                         <th>Tanggal SJ</th>
                         <th>No. SJ</th>
                         <th>Barang</th>
@@ -29,11 +29,10 @@
                         <th>SIM</th>
                         <th>STNK</th>
                         <th>Dokumen</th>
-                        <th>Safety Check</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
-                        <th>Mulai Muat</th>
-                        <th>Akhir Muat</th>
+                        <th>Mulai Bongkar</th>
+                        <th>Selesai Bongkar</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -48,7 +47,7 @@
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->transporter }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
-                        <td>{{ $item->customer }} </td>
+                        <td>{{ $item->supplier }} </td>
                         <td>{{ $item->tgl_sj }} </td>
                         <td>{{ $item->no_sj }} </td>
                         <td>{{ $item->nama_barang }} </td>
@@ -84,11 +83,10 @@
                             <p>No image available</p>
                             @endif
                         </td>
-                        <td>{{ $item->safety_check ? 'Lengkap' : 'Tidak Lengkap' }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') }} </td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') }} </td>
-                        <td>{{ $item->muat_start }} </td>
-                        <td>{{ $item->muat_stop }} </td>
+                        <td>{{ $item->bongkar_start }} </td>
+                        <td>{{ $item->bongkar_stop }} </td>
                         </td>
                     </tr>
                     @endforeach

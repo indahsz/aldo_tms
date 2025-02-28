@@ -8,14 +8,16 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class BongkarController extends Controller
 {
     public function index()
     {
-        $data = bongkar::paginate(20);
+        $data = Bongkar::paginate(5);
+        $kodeTrans = generateKodeTransB(); // Generate the transaction code using the helper function
         $users = User::all(); // Fetch all users
-        return view('aldo_tms/pages/bongkar/bongkar', compact('data', 'users'));
+        return view('aldo_tms.pages.bongkar.bongkar', compact('data', 'kodeTrans', 'users'));
     }
 
 
@@ -37,10 +39,16 @@ class BongkarController extends Controller
             'waktu_in'     => 'required'
         ]);
 
+        // Get the currently logged-in user
+        $userName = Auth::user()->name;
+
+        // Generate kode_trans
+        $kodeTrans = generateKodeTransB();
+
         // Simpan data ke database
         Bongkar::create([
             'tgl_masuk'    => $request->tgl_masuk,
-            'kode_trans'   => $request->kode_trans,
+            'kode_trans'   => $kodeTrans,
             'sopir_nama'   => $request->sopir_nama,
             'sopir_nik'    => $request->sopir_nik,
             'sopir_tlp'    => $request->sopir_tlp,
@@ -170,14 +178,42 @@ class BongkarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, []);
+        $this->validate($request, [
+            'empty_out'     => 'required',
+            'ket_out'       => 'required',
+            'waktu_out'     => 'required',
+        ]);
 
-        // search id 
         $bongkar = Bongkar::findOrFail($id);
+        $userName = Auth::user()->name; // Get logged-in user's name
 
+        $bongkar->update(array_merge($request->all(), [
+            'user_updated' => $userName, // Save name of the person who updated
+        ]));
 
-        // Update data
-        $bongkar->update($request->all());;
+        return redirect()->route('bongkar.index')->with(['success' => 'Data has been updated']);
+    }
+
+    public function bongkarStart(Request $request, $id)
+    {
+        $this->validate($request, [
+            'bongkar_start' => 'required',
+        ]);
+
+        $bongkar = Bongkar::findOrFail($id);
+        $bongkar->update(['bongkar_start' => $request->bongkar_start]);
+
+        return redirect()->route('bongkar.index')->with(['success' => 'Data has been updated']);
+    }
+
+    public function bongkarDone(Request $request, $id)
+    {
+        $this->validate($request, [
+            'bongkar_stop' => 'required',
+        ]);
+
+        $bongkar = Bongkar::findOrFail($id);
+        $bongkar->update(['bongkar_stop' => $request->bongkar_stop]);
 
         return redirect()->route('bongkar.index')->with(['success' => 'Data has been updated']);
     }
