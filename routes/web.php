@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MainController;
 
 // Default route (redirected to after login)
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 // Profile management routes (require authentication)
@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     //Resource route for 'Laporan'
     Route::resource('laporanAngkut', LaporanAngkutController::class);
     Route::resource('laporanBongkar', LaporanBongkarController::class);
+    Route::get('/laporan-angkut/export', [LaporanAngkutController::class, 'exportExcel'])->name('laporanAngkut.export');
 
     //Resouce route for 'Dashboard'
     Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

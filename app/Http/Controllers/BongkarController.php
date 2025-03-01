@@ -79,7 +79,8 @@ class BongkarController extends Controller
             'ket_in'       => $request->ket_in,
             'safety_check' => $request->safety_check,
             'empty_in'     => $request->empty_in,
-            'waktu_in'     => $request->waktu_in
+            'waktu_in'     => $request->waktu_in,
+            'user_created' => $userName,
         ]);
 
         return redirect()->route('bongkar.index')->with(['success' => 'Data has been added']);
