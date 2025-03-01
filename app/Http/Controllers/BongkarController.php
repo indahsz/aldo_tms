@@ -12,12 +12,31 @@ use Illuminate\Support\Facades\Auth;
 
 class BongkarController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Bongkar::paginate(5);
+        $data = Bongkar::paginate(10);
         $kodeTrans = generateKodeTransB(); // Generate the transaction code using the helper function
         $users = User::all(); // Fetch all users
-        return view('aldo_tms.pages.bongkar.bongkar', compact('data', 'kodeTrans', 'users'));
+
+        $query = Bongkar::query();
+
+        //search function
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('kode_trans', 'LIKE', "%search%")
+                    ->orWhere('sopir_nama', 'LIKE', "%search%")
+                    ->orWhere('transporter', 'LIKE', "%search%");
+            });
+        }
+
+        //sorting
+        $sortField = $request->get('sort_field', 'tgl_masuk'); //default sorting by 'tanggal_masuk'
+        $sortOrder = $request->get('sort_order', 'desc'); //default descending;
+
+        $data = $query->orderBy($sortField, $sortOrder)->paginate(10);
+
+        return view('aldo_tms.pages.bongkar.bongkar', compact('data', 'kodeTrans', 'users', 'sortOrder', 'sortField'));
     }
 
 

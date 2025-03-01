@@ -12,17 +12,16 @@
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
 
         <form method="GET" action="{{route('angkut.index')}}">
-        <div class="input-group input-group-merge">
-            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search..."
-              aria-label="Search..."
-              aria-describedby="basic-addon-search31"
-              value="{{request('search')}}"
-            />
-          </div>     
+            <div class="input-group input-group-merge">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                    aria-describedby="basic-addon-search31"
+                    value="{{request('search')}}" />
+            </div>
         </form>
         <div class="table-responsive text-nowrap">
 
@@ -35,10 +34,10 @@
                         <th><a href="{{ route('angkut.index', ['sort_field' => 'sopir_nama', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Sopir</a></th>
                         <th>NIK</th>
                         <th>Tlp</th>
-                        <th>Transporter</th>
-                        <th>Armada</th>
+                        <th><a href="{{ route('angkut.index', ['sort_field' => 'transporter', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Transporter</th>
+                        <th><a href="{{ route('angkut.index', ['sort_field' => 'armada', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Armada</th>
                         <th>Plat Mobil</th>
-                        <th>Customer</th>
+                        <th><a href="{{ route('angkut.index', ['sort_field' => 'customer', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Customer</th>
                         <th>Tanggal SJ</th>
                         <th>No. SJ</th>
                         <th>Barang</th>

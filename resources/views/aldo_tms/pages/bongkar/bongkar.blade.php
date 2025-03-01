@@ -10,20 +10,31 @@
     <!-- Tabel bongkar -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
-
+        <form method="GET" action="{{route('bongkar.index')}}">
+            <div class="input-group input-group-merge">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                    aria-describedby="basic-addon-search31"
+                    value="{{request('search')}}" />
+            </div>
+        </form>
         <div class="table-responsive text-nowrap">
 
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>No. Transaksi</th>
-                        <th>Tgl Masuk</th>
+                        <th><a href="{{ route('bongkar.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No. Transaksi</th>
+                        <th><a href="{{ route('bongkar.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl Masuk</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
                         <th>Plat Mobil</th>
-                        <th>Supplier</th>
+                        <th><a href="{{ route('bongkar.index', ['sort_field' => 'supplier', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Supplier</th>
                         <th>Tanggal SJ</th>
                         <th>No. SJ</th>
                         <th>Barang</th>
@@ -131,9 +142,9 @@
 
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-data{{ $item->id }}">
                                     <i class="bx bx-trash me-1"></i> Delete
-                                </button>                                
+                                </button>
 
-                                @include('aldo_tms.pages.bongkar.modals.delete')                    
+                                @include('aldo_tms.pages.bongkar.modals.delete')
                             </div>
                         </td>
                     </tr>

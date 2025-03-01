@@ -6,7 +6,18 @@
     <!-- Tabel Angkut -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
-
+        <form method="GET" action="{{route('laporanAngkut.index')}}">
+            <div class="input-group input-group-merge">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                    aria-describedby="basic-addon-search31"
+                    value="{{request('search')}}" />
+            </div>
+        </form>
         <div class="table-responsive text-nowrap">
 
             <table class="table table-hover">

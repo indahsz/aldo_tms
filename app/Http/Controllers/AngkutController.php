@@ -15,19 +15,21 @@ class AngkutController extends Controller
 {
     public function index(Request $request)
     {
-        //$data = Angkut::paginate(5);
+        $data = Angkut::paginate(10);
         $kodeTrans = generateKodeTrans(); // Generate the transaction code using the helper function
         $users = User::all(); // Fetch all users
 
         $query = Angkut::query();
 
         //search function
-        if($request->filled('search')) {
+        if ($request->filled('search')) {
             $search = $request->search;
-            $query->where(function ($q) use ($search){
+            $query->where(function ($q) use ($search) {
                 $q->where('kode_trans', 'LIKE', "%search%")
                     ->orWhere('sopir_nama', 'LIKE', "%search%")
-                    ->orWhere('armada', 'LIKE', "%search%");
+                    ->orWhere('armada', 'LIKE', "%search%")
+                    ->orWhere('transporter', 'LIKE', "%search%")
+                    ->orWhere('customer', 'LIKE', "%search%");
             });
         }
 
