@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/angkut/uploadDokumen/{id}', [AngkutController::class, 'uploadDokumen'])->name('angkut.uploadDokumen');
     Route::post('/angkut/muatStart/{id}', [AngkutController::class, 'muatStart'])->name('angkut.muatStart');
     Route::post('/angkut/muatDone/{id}', [AngkutController::class, 'muatDone'])->name('angkut.muatDone');
+   
 
     // Resource routes for 'bongkar'
     Route::resource('bongkar', BongkarController::class);

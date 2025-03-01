@@ -13,12 +13,31 @@ use Illuminate\Support\Facades\Auth;
 
 class AngkutController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Angkut::paginate(5);
+        //$data = Angkut::paginate(5);
         $kodeTrans = generateKodeTrans(); // Generate the transaction code using the helper function
         $users = User::all(); // Fetch all users
-        return view('aldo_tms.pages.angkut.angkut', compact('data', 'kodeTrans', 'users'));
+
+        $query = Angkut::query();
+
+        //search function
+        if($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search){
+                $q->where('kode_trans', 'LIKE', "%search%")
+                    ->orWhere('sopir_nama', 'LIKE', "%search%")
+                    ->orWhere('armada', 'LIKE', "%search%");
+            });
+        }
+
+        //sorting
+        $sortField = $request->get('sort_field', 'tgl_masuk'); //default sorting by 'tanggal_masuk'
+        $sortOrder = $request->get('sort_order', 'desc'); //default descending;
+
+        $data = $query->orderBy($sortField, $sortOrder)->paginate(5);
+
+        return view('aldo_tms.pages.angkut.angkut', compact('data', 'kodeTrans', 'users', 'sortOrder', 'sortField'));
     }
 
 
