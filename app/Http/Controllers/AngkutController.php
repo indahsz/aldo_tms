@@ -25,13 +25,15 @@ class AngkutController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('kode_trans', 'LIKE', "%$search%")
-                    ->orWhere('tgl_masuk', 'LIKE', "%$search%")
                     ->orWhere('transporter', 'LIKE', "%$search%")
-                    ->orWhere('sopir_nama', 'LIKE', "%$search%");
+                    ->orWhere('sopir_nama', 'LIKE', "%$search%")
+                    ->orWhere('customer', 'LIKE', "%$search%")
+                    ->orWhere('no_sj', 'LIKE', "%$search%")
+                    ->orWhere('armada', 'LIKE', "%$search%");
             });
         }
 
-         // Filter by date range
+        // Filter by date range
         if ($request->filled('date_from') && $request->filled('date_to')) {
             $query->whereBetween('tgl_masuk', [$request->date_from, $request->date_to]);
         }
@@ -40,7 +42,7 @@ class AngkutController extends Controller
         $sortField = $request->get('sort_field', 'tgl_masuk'); //default sorting by 'tanggal_masuk'
         $sortOrder = $request->get('sort_order', 'desc'); //default descending;
 
-        $data = $query->orderBy($sortField, $sortOrder)->paginate(5);
+        $data = $query->orderBy($sortField, $sortOrder)->paginate(10);
 
         return view('aldo_tms.pages.angkut.angkut', compact('data', 'kodeTrans', 'users', 'sortOrder', 'sortField'));
     }

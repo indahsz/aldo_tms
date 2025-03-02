@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <label for="from_date" class="col-form-label">Dari Tanggal</label>
                     <input type="date" id="from_date" name="from_date" class="form-control"
-                    value="{{ request('from_date') }}">
+                        value="{{ request('from_date') }}">
                 </div>
                 <div class="col-md-4">
                     <label for="to_date" class="col-form-label">Sampai Tanggal</label>
@@ -36,6 +36,7 @@
                         <th>NIK</th>
                         <th>Tlp</th>
                         <th>Transporter</th>
+                        <th>Armada</th>
                         <th>Plat Mobil</th>
                         <th>Customer</th>
                         <th>Tanggal SJ</th>
@@ -64,6 +65,7 @@
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->transporter }} </td>
+                        <td>{{ $item->armada }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->customer }} </td>
                         <td>{{ $item->tgl_sj }} </td>

@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/angkut/uploadDokumen/{id}', [AngkutController::class, 'uploadDokumen'])->name('angkut.uploadDokumen');
     Route::post('/angkut/muatStart/{id}', [AngkutController::class, 'muatStart'])->name('angkut.muatStart');
     Route::post('/angkut/muatDone/{id}', [AngkutController::class, 'muatDone'])->name('angkut.muatDone');
-   
+
 
     // Resource routes for 'bongkar'
     Route::resource('bongkar', BongkarController::class);
@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('laporanAngkut', LaporanAngkutController::class);
     Route::resource('laporanBongkar', LaporanBongkarController::class);
     Route::get('/laporan-angkut/export', [LaporanAngkutController::class, 'exportExcel'])->name('laporanAngkut.export');
+    Route::get('/laporan-bongkar/export', [LaporanBongkarController::class, 'exportExcel'])->name('laporanBongkar.export');
 
     //Resouce route for 'Dashboard'
     Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

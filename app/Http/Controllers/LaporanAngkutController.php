@@ -19,7 +19,7 @@ class LaporanAngkutController extends Controller
         $fromDate = $request->input('from_date', now()->subMonth()->format('Y-m-d'));
         $toDate = $request->input('to_date', now()->format('Y-m-d'));
 
-        $data = Angkut::whereBetween('tgl_masuk', [$fromDate, $toDate])->paginate(5);
+        $data = Angkut::whereBetween('tgl_masuk', [$fromDate, $toDate])->paginate(20);
         $users = User::all();
 
         return view('aldo_tms.pages.laporan.angkut', compact('data', 'users'));
@@ -30,7 +30,7 @@ class LaporanAngkutController extends Controller
     {
         $fromDate = $request->input('from_date', now()->submonth()->format('Y-m-d'));
         $toDate = $request->input('to_date', now()->format('Y-m-d'));
-        
-        return Excel::download(new LaporanAngkutExport($fromDate,$toDate), 'LaporanAngkut.xlsx');
+
+        return Excel::download(new LaporanAngkutExport($fromDate, $toDate), 'LaporanAngkut.xlsx');
     }
 }

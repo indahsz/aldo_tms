@@ -10,16 +10,16 @@
     <!-- Tabel bongkar -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
-        <form method="GET" action="{{route('bongkar.index')}}">
+        <form method="GET" action="{{ route('bongkar.index') }}" class="mb-4">
             <div class="input-group input-group-merge">
                 <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                    aria-describedby="basic-addon-search31"
-                    value="{{request('search')}}" />
+                <input type="text" name="search" class="form-control" placeholder="Search..." aria-label="Search..."
+                    aria-describedby="basic-addon-search31" value="{{ request('search') }}" />
+
+                <input type="date" name="date_from" value="{{ request('date_from') }}">
+                <input type="date" name="date_to" value="{{ request('date_to') }}">
+
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>
         <div class="table-responsive text-nowrap">

@@ -14,20 +14,24 @@ class BongkarController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Bongkar::paginate(10);
         $kodeTrans = generateKodeTransB(); // Generate the transaction code using the helper function
         $users = User::all(); // Fetch all users
 
         $query = Bongkar::query();
 
-        //search function
+        //search function more detailed
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
-                $q->where('kode_trans', 'LIKE', "%search%")
-                    ->orWhere('sopir_nama', 'LIKE', "%search%")
-                    ->orWhere('transporter', 'LIKE', "%search%");
+                $q->where('kode_trans', 'LIKE', "%$search%")
+                    ->orWhere('supplier', 'LIKE', "%$search%")
+                    ->orWhere('no_sj', 'LIKE', "%$search%");
             });
+        }
+
+        // Filter by date range
+        if ($request->filled('date_from') && $request->filled('date_to')) {
+            $query->whereBetween('tgl_masuk', [$request->date_from, $request->date_to]);
         }
 
         //sorting

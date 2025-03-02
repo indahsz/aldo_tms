@@ -6,16 +6,22 @@
     <!-- Tabel Bongkar -->
     <div class="card">
         <!-- <h5 class="card-header">Hoverable rows</h5> -->
-        <form method="GET" action="{{route('laporanBongkar.index')}}">
-            <div class="input-group input-group-merge">
-                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                    aria-describedby="basic-addon-search31"
-                    value="{{request('search')}}" />
+
+        <form method="GET" action="{{ route('laporanBongkar.index') }}" class="mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="from_date" class="col-form-label">Dari Tanggal</label>
+                    <input type="date" id="from_date" name="from_date" class="form-control"
+                        value="{{ request('from_date') }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="to_date" class="col-form-label">Sampai Tanggal</label>
+                    <input type="date" id="to_date" name="to_date" class="form-control" value="{{ request('to_date') }}">
+                </div>
+                <div class="col-md-4 mt-4">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="{{ route('laporanBongkar.export', ['from_date' => request('from_date'), 'to_date' => request('to_date')]) }}" class="btn btn-success">Export Excel</a>
+                </div>
             </div>
         </form>
         <div class="table-responsive text-nowrap">
