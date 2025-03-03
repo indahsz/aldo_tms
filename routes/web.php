@@ -39,8 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan-angkut/export', [LaporanAngkutController::class, 'exportExcel'])->name('laporanAngkut.export');
     Route::get('/laporan-bongkar/export', [LaporanBongkarController::class, 'exportExcel'])->name('laporanBongkar.export');
 
-    //Resouce route for 'Dashboard'
-    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 });
 
 // Laravel Breeze authentication routes

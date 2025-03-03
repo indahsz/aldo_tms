@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Carbon\Carbon;
 
-class LaporanAngkutExport implements FromCollection, WithHeadings, ShouldAutoSize, WithMapping
+class LaporanBongkarExport implements FromCollection, WithHeadings, ShouldAutoSize, WithMapping
 
 {
     protected $fromDate;
