@@ -112,16 +112,16 @@ class AngkutController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'sim_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/sim/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/angkut/sim/$imageName", base64_decode($image));
 
-            $angkut->update(['foto_sim' => "upload/images/sim/$imageName"]);
+            $angkut->update(['foto_sim' => "upload/images/angkut/sim/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_sim')) {
             $file = $request->file('foto_sim');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/sim', $fileName, 'public');
+            $path = $file->storeAs('upload/images/angkut/sim', $fileName, 'public');
 
             $angkut->update(['foto_sim' => $path]);
         }
@@ -149,16 +149,16 @@ class AngkutController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'stnk_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/stnk/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/angkut/stnk/$imageName", base64_decode($image));
 
-            $angkut->update(['foto_stnk' => "upload/images/stnk/$imageName"]);
+            $angkut->update(['foto_stnk' => "upload/images/angkut/stnk/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_stnk')) {
             $file = $request->file('foto_stnk');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/stnk', $fileName, 'public');
+            $path = $file->storeAs('upload/images/angkut/stnk', $fileName, 'public');
 
             $angkut->update(['foto_stnk' => $path]);
         }
@@ -185,16 +185,16 @@ class AngkutController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'dokumen_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/dokumen/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/angkut/dokumen/$imageName", base64_decode($image));
 
-            $angkut->update(['foto_dokumen' => "upload/images/dokumen/$imageName"]);
+            $angkut->update(['foto_dokumen' => "upload/images/angkut/dokumen/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_dokumen')) {
             $file = $request->file('foto_dokumen');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/dokumen', $fileName, 'public');
+            $path = $file->storeAs('upload/images/angkut/dokumen', $fileName, 'public');
 
             $angkut->update(['foto_dokumen' => $path]);
         }
