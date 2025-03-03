@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
+    public const HOME = '/dashboard';
     public function register(): void
     {
         //
@@ -20,5 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+    Paginator::useBootstrapFive();
+    Paginator::useBootstrapFour();
+
     }
+
+    
 }
