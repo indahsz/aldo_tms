@@ -112,8 +112,8 @@
                         </td>
                         <td>{{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }}</td>
                         <td>{{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i') : '-' }}</td>
-                        <td>{{ $item->bongkar_start ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }} </td>
-                        <td>{{ $item->bongkar_stop ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }} </td>
+                        <td>{{ $item->bongkar_start ? \Carbon\Carbon::parse($item->bongkar_start)->format('d-m-Y H:i') : '-' }} </td>
+                        <td>{{ $item->bongkar_stop ? \Carbon\Carbon::parse($item->bongkar_out)->format('d-m-Y H:i') : '-' }} </td>
                         <td>
                             <div class="d-flex gap-2">
                                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#bongkar-start{{ $item->id }}">

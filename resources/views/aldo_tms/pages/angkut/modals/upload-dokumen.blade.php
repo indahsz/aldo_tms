@@ -49,7 +49,7 @@
     
             // Open camera when modal is shown
             document.getElementById(modalId).addEventListener("shown.bs.modal", function () {
-                navigator.mediaDevices.getUserMedia({ video: true })
+                navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }) // Use back camera
                     .then(function (stream) {
                         video.srcObject = stream;
                     })

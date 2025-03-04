@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\bongkar;
+use App\Models\Bongkar;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;

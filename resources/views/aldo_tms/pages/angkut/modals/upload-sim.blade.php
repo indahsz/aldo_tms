@@ -46,9 +46,10 @@
 
     document.addEventListener("DOMContentLoaded", function() {
         // Open camera when modal is shown
+        
         document.getElementById("upload-sim").addEventListener("shown.bs.modal", function() {
             navigator.mediaDevices.getUserMedia({
-                    video: true
+                    video: { facingMode: "environment" }
                 })
                 .then(function(stream) {
                     video.srcObject = stream;

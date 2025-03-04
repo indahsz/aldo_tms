@@ -133,9 +133,9 @@
                                 </td>
                                 <td>{{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i') : '-' }}
                                 </td>
-                                <td>{{ $item->muat_start ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }}
+                                <td>{{ $item->muat_start ? \Carbon\Carbon::parse($item->muat_start)->format('d-m-Y H:i') : '-' }}
                                 </td>
-                                <td>{{ $item->muat_stop ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }}
+                                <td>{{ $item->muat_stop ? \Carbon\Carbon::parse($item->muat_stop)->format('d-m-Y H:i') : '-' }}
                                 </td>
                                 <td>
                                     <div class="d-flex gap-2">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\angkut;
+use App\Models\Angkut;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
