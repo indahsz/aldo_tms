@@ -2,16 +2,29 @@
 
 use App\Models\Angkut;
 use App\Models\Bongkar;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 if (!function_exists('generateKodeTrans')) {
     function generateKodeTrans()
     {
+        // Get the logged-in user's department
+        $user = Auth::user();
+        $prefix = 'CU'; // Default prefix
+        
+        if ($user) {
+            if (str_contains($user->departement, 'HPC')) {
+                $prefix = 'CUHP';
+            } elseif (str_contains($user->departement, 'PT')) {
+                $prefix = 'CUPT';
+            }
+        }
+
         // Get current date in yyMMdd format
         $datePart = Carbon::now()->format('y') . Carbon::now()->format('m') . Carbon::now()->format('d');
 
         // Find the last inserted kode_trans for today
-        $latestEntry = Angkut::where('kode_trans', 'LIKE', "CU{$datePart}%")
+        $latestEntry = Angkut::where('kode_trans', 'LIKE', "{$prefix}{$datePart}%")
             ->orderBy('kode_trans', 'desc')
             ->first();
 
@@ -26,9 +39,10 @@ if (!function_exists('generateKodeTrans')) {
         $sequence = str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
 
         // Generate the final kode_trans
-        return "CU{$datePart}{$sequence}";
+        return "{$prefix}{$datePart}{$sequence}";
     }
 }
+
 
 if (!function_exists('generateKodeTransB')) {
     function generateKodeTransB()

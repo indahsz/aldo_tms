@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('angkuts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->date('tgl_masuk');
+            $table->string('departement')->nullable();
             $table->string('kode_trans')->nullable();
             $table->string('sopir_nama')->nullable();
             $table->string('sopir_nik')->nullable();

@@ -32,6 +32,7 @@
                         <th>No.</th>
                         <th>Kode Transaksi</th>
                         <th>Tgl Masuk</th>
+                        <th>Departement</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
@@ -61,6 +62,7 @@
                         <td>{{ $key + 1 }} </td>
                         <td>{{ $item->kode_trans }} </td>
                         <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') }} </td>
+                        <td>{{ $item->departement }} </td>
                         <td>{{ $item->sopir_nama }} </td>
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
@@ -106,6 +108,7 @@
                         <td>{{ $item->safety_check ? 'Lengkap' : 'Tidak Lengkap' }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') }} </td>
                         <td>{{ \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') }} </td>
+                        {{-- <td>Waktu Progress</td> --}}
                         <td>{{ $item->muat_start }} </td>
                         <td>{{ $item->muat_stop }} </td>
                         </td>

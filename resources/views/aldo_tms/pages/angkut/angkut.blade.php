@@ -36,6 +36,9 @@
                                     href="{{ route('angkut.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl
                                     Masuk</a></th>
                             <th><a
+                                href="{{ route('angkut.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Departement</a>
+                            </th>
+                            <th><a
                                     href="{{ route('angkut.index', ['sort_field' => 'sopir_nama', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Sopir</a>
                             </th>
                             <th>NIK</th>
@@ -49,7 +52,7 @@
                             <th>Plat Mobil</th>
                             <th><a
                                     href="{{ route('angkut.index', ['sort_field' => 'customer', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Customer
-                            </th>
+                            </th>    
                             <th>Tanggal SJ</th>
                             <th>No. SJ</th>
                             <th>Barang</th>
@@ -72,8 +75,8 @@
                             <tr>
                                 <td>{{ $key + 1 }} </td>
                                 <td>{{ $item->kode_trans }} </td>
-                                <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') : '-' }}
-                                </td>
+                                <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') : '-' }}</td>
+                                <td>{{ $item->departement }} </td>
                                 <td>{{ $item->sopir_nama }} </td>
                                 <td>{{ $item->sopir_nik }} </td>
                                 <td>{{ $item->sopir_tlp }} </td>

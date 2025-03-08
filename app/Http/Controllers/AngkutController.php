@@ -16,8 +16,7 @@ class AngkutController extends Controller
     public function index(Request $request)
     {
         $kodeTrans = generateKodeTrans(); // Generate the transaction code using the helper function
-        $users = User::all(); // Fetch all users
-
+        $users = User::all(); // Fetch all user
         $query = Angkut::query();
 
         //search function more detailed
@@ -53,6 +52,7 @@ class AngkutController extends Controller
         $this->validate($request, [
             'tgl_masuk'    => 'required|date',
             'kode_trans'   => 'required',
+            'departement'  => 'required',
             'sopir_nama'   => 'required',
             'sopir_nik'    => 'required',
             'sopir_tlp'    => 'required',
@@ -66,7 +66,7 @@ class AngkutController extends Controller
         ]);
 
         // Get the currently logged-in user
-        $userName = Auth::user()->name;
+        $user = Auth::user();
 
         // Generate kode_trans
         $kodeTrans = generateKodeTrans();
@@ -74,6 +74,7 @@ class AngkutController extends Controller
         // Save data to database
         Angkut::create([
             'tgl_masuk'    => $request->tgl_masuk,
+            'departement'  => $user->departement,
             'kode_trans'   => $kodeTrans,
             'sopir_nama'   => $request->sopir_nama,
             'sopir_nik'    => $request->sopir_nik,
@@ -85,7 +86,7 @@ class AngkutController extends Controller
             'safety_check' => $request->safety_check,
             'empty_in'     => $request->empty_in,
             'waktu_in'     => $request->waktu_in,
-            'user_created' => $userName, // Store user_created
+            'user_created' => $user->name, 
         ]);
 
         return redirect()->route('angkut.index')->with(['success' => 'Data has been added']);

@@ -39,6 +39,21 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="departement" :value="__('Departement')" />
+            
+            <select id="departement" class="block mt-1 w-full" name="departement_id" required>
+                <option value="">Select Departement</option>
+                @foreach (\App\Models\Departement::all() as $departement)
+                    <option value="{{ $departement->id }}" {{ old('departement_id') == $departement->id ? 'selected' : '' }}>
+                        {{ $departement->name_departement }}
+                    </option>
+                @endforeach
+            </select>
+        
+            <x-input-error :messages="$errors->get('departement_id')" class="mt-2" />
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
