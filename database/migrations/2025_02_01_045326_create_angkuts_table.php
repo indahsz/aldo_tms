@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('foto_sim')->nullable();
             $table->string('foto_stnk')->nullable();
             $table->string('foto_dokumen')->nullable();
+            $table->string('foto_dokumen_k')->nullable();
             $table->string('safety_check');
             $table->string('empty_in')->nullable();
             $table->string('empty_out')->nullable();

@@ -11,7 +11,7 @@ if (!function_exists('generateKodeTrans')) {
         // Get the logged-in user's department
         $user = Auth::user();
         $prefix = 'CU'; // Default prefix
-        
+
         if ($user) {
             if (str_contains($user->departement, 'HPC')) {
                 $prefix = 'CUHP';
@@ -47,11 +47,23 @@ if (!function_exists('generateKodeTrans')) {
 if (!function_exists('generateKodeTransB')) {
     function generateKodeTransB()
     {
+        // Get the logged-in user's department
+        $user = Auth::user();
+        $prefix = 'SU'; // Default prefix
+
+        if ($user) {
+            if (str_contains($user->departement, 'HPC')) {
+                $prefix = 'SUHP';
+            } elseif (str_contains($user->departement, 'PT')) {
+                $prefix = 'SUPT';
+            }
+        }
+
         // Get current date in yyMMdd format
         $datePart = Carbon::now()->format('y') . Carbon::now()->format('m') . Carbon::now()->format('d');
 
         // Find the last inserted kode_trans for today
-        $latestEntry = Bongkar::where('kode_trans', 'LIKE', "SU{$datePart}%")
+        $latestEntry = Bongkar::where('kode_trans', 'LIKE', "{$prefix}{$datePart}%")
             ->orderBy('kode_trans', 'desc')
             ->first();
 
@@ -66,6 +78,6 @@ if (!function_exists('generateKodeTransB')) {
         $sequence = str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
 
         // Generate the final kode_trans
-        return "SU{$datePart}{$sequence}";
+        return "{$prefix}{$datePart}{$sequence}";
     }
 }

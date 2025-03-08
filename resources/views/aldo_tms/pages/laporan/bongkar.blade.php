@@ -32,10 +32,10 @@
                         <th>No.</th>
                         <th>Kode Transaksi</th>
                         <th>Tgl Masuk</th>
+                        <th>Departement</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
-                        <th>Transporter</th>
                         <th>Plat Mobil</th>
                         <th>Supplier</th>
                         <th>Tanggal SJ</th>
@@ -45,7 +45,8 @@
                         <th>Ket. Keluar</th>
                         <th>SIM</th>
                         <th>STNK</th>
-                        <th>Dokumen</th>
+                        <th>Dokumen Masuk</th>
+                        <th>Dokumen Keluar</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
                         <th>Mulai Bongkar</th>
@@ -59,10 +60,10 @@
                         <td>{{ $key + 1 }} </td>
                         <td>{{ $item->kode_trans }} </td>
                         <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') }} </td>
+                        <td>{{ $item->departement }} </td>
                         <td>{{ $item->sopir_nama }} </td>
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
-                        <td>{{ $item->transporter }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->supplier }} </td>
                         <td>{{ $item->tgl_sj }} </td>
@@ -94,6 +95,16 @@
                             @if (!empty($item->foto_dokumen))
                             <a href="{{ asset('storage/' . $item->foto_dokumen) }}" target="_blank">
                                 <img src="{{ asset('storage/' . $item->foto_dokumen) }}" alt="Foto DOKUMEN"
+                                    width="50" height="50" class="rounded img-thumbnail">
+                            </a>
+                            @else
+                            <p>No image available</p>
+                            @endif
+                        </td>
+                        <td>
+                            @if (!empty($item->foto_dokumen))
+                            <a href="{{ asset('storage/' . $item->foto_dokumen_k) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $item->foto_dokumen_k) }}" alt="Foto DOKUMEN"
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else

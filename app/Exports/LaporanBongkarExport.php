@@ -31,6 +31,7 @@ class LaporanBongkarExport implements FromCollection, WithHeadings, ShouldAutoSi
         return [
             'Kode Transaksi',
             'Tgl Masuk',
+            'Departement',
             'Sopir',
             'NIK',
             'TLP',
@@ -54,6 +55,7 @@ class LaporanBongkarExport implements FromCollection, WithHeadings, ShouldAutoSi
         return [
             $item->kode_trans,
             Carbon::parse($item->tgl_masuk)->format('d-m-Y'),
+            $item->department,
             $item->sopir_nama,
             $item->sopir_nik,
             $item->sopir_tlp,

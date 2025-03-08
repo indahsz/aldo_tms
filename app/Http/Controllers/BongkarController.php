@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+
 class BongkarController extends Controller
 {
     public function index(Request $request)
     {
         $kodeTrans = generateKodeTransB(); // Generate the transaction code using the helper function
         $users = User::all(); // Fetch all users
-
         $query = Bongkar::query();
 
         //search function more detailed
@@ -48,6 +48,7 @@ class BongkarController extends Controller
     {
         $this->validate($request, [
             'tgl_masuk'    => 'required|date',
+            'departement'  => 'required',
             'kode_trans'   => 'required',
             'sopir_nama'   => 'required',
             'sopir_nik'    => 'required',
@@ -63,7 +64,7 @@ class BongkarController extends Controller
         ]);
 
         // Get the currently logged-in user
-        $userName = Auth::user()->name;
+        $user = Auth::user();
 
         // Generate kode_trans
         $kodeTrans = generateKodeTransB();
@@ -71,6 +72,7 @@ class BongkarController extends Controller
         // Simpan data ke database
         Bongkar::create([
             'tgl_masuk'    => $request->tgl_masuk,
+            'departement'  => $user->departement,
             'kode_trans'   => $kodeTrans,
             'sopir_nama'   => $request->sopir_nama,
             'sopir_nik'    => $request->sopir_nik,
@@ -84,7 +86,7 @@ class BongkarController extends Controller
             'safety_check' => $request->safety_check,
             'empty_in'     => $request->empty_in,
             'waktu_in'     => $request->waktu_in,
-            'user_created' => $userName,
+            'user_created' => $user->name,
         ]);
 
         return redirect()->route('bongkar.index')->with(['success' => 'Data has been added']);
@@ -181,20 +183,56 @@ class BongkarController extends Controller
         if ($request->captured_image) {
             $image = str_replace('data:image/png;base64,', '', $request->captured_image);
             $image = str_replace(' ', '+', $image);
-            $imageName = 'dokumen_' . time() . '_' . Str::random(10) . '.png';
+            $imageName = 'dokumen_msk_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/dokumen/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/dokumen/dokumen_masuk/$imageName", base64_decode($image));
 
-            $bongkar->update(['foto_dokumen' => "upload/images/dokumen/$imageName"]);
+            $bongkar->update(['foto_dokumen' => "upload/images/dokumen/dokumen_masuk/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_dokumen')) {
             $file = $request->file('foto_dokumen');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/dokumen', $fileName, 'public');
+            $path = $file->storeAs('upload/images/dokumen/dokumen_masuk/', $fileName, 'public');
 
             $bongkar->update(['foto_dokumen' => $path]);
+        }
+
+        return redirect()->back()->with('success', 'Dokumen uploaded successfully!');
+    }
+
+    public function uploadDokumenK(Request $request, $id)
+    {
+        $request->validate([
+            'captured_image' => 'nullable|string',
+            'foto_dokumen_k' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $bongkar = Bongkar::find($id);
+
+        if (!$bongkar) {
+            return redirect()->back()->with('error', 'Data not found!');
+        }
+
+        // Handle camera-captured image (Base64)
+        if ($request->captured_image) {
+            $image = str_replace('data:image/png;base64,', '', $request->captured_image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = 'dokumen_kel_' . time() . '_' . Str::random(10) . '.png';
+
+            Storage::disk('public')->put("upload/images/bongkar/dokumen/dokumen_keluar/$imageName", base64_decode($image));
+
+            $bongkar->update(['foto_dokumen_k' => "upload/images/bongkar/dokumen/dokumen_keluar/$imageName"]);
+        }
+
+        // Handle file upload
+        if ($request->hasFile('foto_dokumen_k')) {
+            $file = $request->file('foto_dokumen_k');
+            $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('upload/images/bongkar/dokumen/dokumen_keluar', $fileName, 'public');
+
+            $bongkar->update(['foto_dokumen_k' => $path]);
         }
 
         return redirect()->back()->with('success', 'Dokumen uploaded successfully!');

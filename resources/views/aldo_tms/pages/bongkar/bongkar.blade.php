@@ -30,6 +30,9 @@
                         <th>No.</th>
                         <th><a href="{{ route('bongkar.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No. Transaksi</th>
                         <th><a href="{{ route('bongkar.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl Masuk</th>
+                        <th><a
+                                href="{{ route('bongkar.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Departement</a>
+                        </th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
@@ -42,7 +45,8 @@
                         <th>Ket. Keluar</th>
                         <th>SIM</th>
                         <th>STNK</th>
-                        <th>Dokumen</th>
+                        <th>Dokumen Masuk</th>
+                        <th>Dokumen Keluar</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
                         <th>Mulai Bongkar</th>
@@ -58,6 +62,7 @@
                         <td>{{ $key + 1 }} </td>
                         <td>{{ $item->kode_trans }} </td>
                         <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') : '-' }}</td>
+                        <td>{{ $item->departement }} </td>
                         <td>{{ $item->sopir_nama }} </td>
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
@@ -104,6 +109,20 @@
                             @if (!empty($item->foto_dokumen))
                             <a href="{{ asset('storage/' . $item->foto_dokumen) }}" target="_blank">
                                 <img src="{{ asset('storage/' . $item->foto_dokumen) }}" alt="Foto DOKUMEN"
+                                    width="50" height="50" class="rounded img-thumbnail">
+                            </a>
+                            @else
+                            <p>No image available</p>
+                            @endif
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary upload-dokumen-k-btn" data-bs-toggle="modal"
+                                data-bs-target="#upload-dokumen-k" data-id="{{ $item->id }}">
+                                +
+                            </button>
+                            @if (!empty($item->foto_dokumen_k))
+                            <a href="{{ asset('storage/' . $item->foto_dokumen_k) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $item->foto_dokumen_k) }}" alt="Foto DOKUMEN"
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
@@ -161,5 +180,6 @@
 @include('aldo_tms.pages.bongkar.modals.upload-sim')
 @include('aldo_tms.pages.bongkar.modals.upload-stnk')
 @include('aldo_tms.pages.bongkar.modals.upload-dokumen')
+@include('aldo_tms.pages.bongkar.modals.upload-dokumen-k')
 @include('aldo_tms.pages.bongkar.modals.tambah')
 @endsection

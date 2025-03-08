@@ -47,12 +47,13 @@
                         <th>Ket. Keluar</th>
                         <th>SIM</th>
                         <th>STNK</th>
-                        <th>Dokumen</th>
+                        <th>Dokumen Masuk</th>
+                        <th>Dokumen Keluar</th>
                         <th>Safety Check</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
                         <th>Mulai Muat</th>
-                        <th>Akhir Muat</th>
+                        <th>Selesai Muat</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -99,6 +100,16 @@
                             @if (!empty($item->foto_dokumen))
                             <a href="{{ asset('storage/' . $item->foto_dokumen) }}" target="_blank">
                                 <img src="{{ asset('storage/' . $item->foto_dokumen) }}" alt="Foto DOKUMEN"
+                                    width="50" height="50" class="rounded img-thumbnail">
+                            </a>
+                            @else
+                            <p>No image available</p>
+                            @endif
+                        </td>
+                        <td>
+                            @if (!empty($item->foto_dokumen))
+                            <a href="{{ asset('storage/' . $item->foto_dokumen_k) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $item->foto_dokumen_k) }}" alt="Foto DOKUMEN"
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else

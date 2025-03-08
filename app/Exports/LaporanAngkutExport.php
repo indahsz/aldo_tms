@@ -29,10 +29,25 @@ class LaporanAngkutExport implements FromCollection, WithHeadings, ShouldAutoSiz
     public function headings(): array
     {
         return [
-            'Kode Transaksi', 'Tgl Masuk','Departement', 'Sopir', 'NIK', 'TLP',
-            'Transporter', 'Plat Mobil' , 'Customer' , 'Tanggal SJ', 'No. SJ', 
-            'Barang', 'Ket. Masuk', 'Ket. Keluar', 'Safety Check', 'Waktu Masuk', 
-            'Waktu Keluar', 'Mulai Muat', 'Akhir Muat'        
+            'Kode Transaksi',
+            'Tgl Masuk',
+            'Departement',
+            'Sopir',
+            'NIK',
+            'TLP',
+            'Transporter',
+            'Plat Mobil',
+            'Customer',
+            'Tanggal SJ',
+            'No. SJ',
+            'Barang',
+            'Ket. Masuk',
+            'Ket. Keluar',
+            'Safety Check',
+            'Waktu Masuk',
+            'Waktu Keluar',
+            'Mulai Muat',
+            'Akhir Muat'
         ];
     }
 

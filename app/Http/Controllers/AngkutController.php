@@ -86,7 +86,7 @@ class AngkutController extends Controller
             'safety_check' => $request->safety_check,
             'empty_in'     => $request->empty_in,
             'waktu_in'     => $request->waktu_in,
-            'user_created' => $user->name, 
+            'user_created' => $user->name,
         ]);
 
         return redirect()->route('angkut.index')->with(['success' => 'Data has been added']);
@@ -184,20 +184,56 @@ class AngkutController extends Controller
         if ($request->captured_image) {
             $image = str_replace('data:image/png;base64,', '', $request->captured_image);
             $image = str_replace(' ', '+', $image);
-            $imageName = 'dokumen_' . time() . '_' . Str::random(10) . '.png';
+            $imageName = 'dokumen_msk_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/angkut/dokumen/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/angkut/dokumen/dokumen_masuk/$imageName", base64_decode($image));
 
-            $angkut->update(['foto_dokumen' => "upload/images/angkut/dokumen/$imageName"]);
+            $angkut->update(['foto_dokumen' => "upload/images/angkut/dokumen/dokumen_masuk/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_dokumen')) {
             $file = $request->file('foto_dokumen');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/angkut/dokumen', $fileName, 'public');
+            $path = $file->storeAs('upload/images/angkut/dokumen/dokumen_masuk', $fileName, 'public');
 
             $angkut->update(['foto_dokumen' => $path]);
+        }
+
+        return redirect()->back()->with('success', 'Dokumen uploaded successfully!');
+    }
+
+    public function uploadDokumenK(Request $request, $id)
+    {
+        $request->validate([
+            'captured_image' => 'nullable|string',
+            'foto_dokumen_k' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $angkut = Angkut::find($id);
+
+        if (!$angkut) {
+            return redirect()->back()->with('error', 'Data not found!');
+        }
+
+        // Handle camera-captured image (Base64)
+        if ($request->captured_image) {
+            $image = str_replace('data:image/png;base64,', '', $request->captured_image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = 'dokumen_kel_' . time() . '_' . Str::random(10) . '.png';
+
+            Storage::disk('public')->put("upload/images/angkut/dokumen/dokumen_keluar/$imageName", base64_decode($image));
+
+            $angkut->update(['foto_dokumen_k' => "upload/images/angkut/dokumen/dokumen_keluar/$imageName"]);
+        }
+
+        // Handle file upload
+        if ($request->hasFile('foto_dokumen_k')) {
+            $file = $request->file('foto_dokumen_k');
+            $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('upload/images/angkut/dokumen/dokumen_keluar', $fileName, 'public');
+
+            $angkut->update(['foto_dokumen_k' => $path]);
         }
 
         return redirect()->back()->with('success', 'Dokumen uploaded successfully!');

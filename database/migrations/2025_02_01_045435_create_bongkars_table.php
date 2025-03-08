@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bongkars', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('kode_trans')->unique();
+            $table->string('departement')->nullable();
             $table->date('tgl_masuk');
             $table->string('sopir_nama');
             $table->string('sopir_nik')->nullable();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->string('foto_sim')->nullable();
             $table->string('foto_stnk')->nullable();
             $table->string('foto_dokumen')->nullable();
+            $table->string('foto_dokumen_k')->nullable();
             $table->string('empty_in');
             $table->string('empty_out')->nullable();
             $table->string('user_created')->nullable();

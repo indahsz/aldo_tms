@@ -1,28 +1,28 @@
-<div class="modal fade" id="upload-dokumen" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="upload-dokumen-k" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Upload Dokumen Masuk</h5>
+                <h5 class="modal-title">Upload Dokumen Keluar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data" id="upload-dokumen-form">
+                <form method="POST" enctype="multipart/form-data" id="upload-dokumen-k-form">
                     @csrf
-                    <input type="hidden" name="id" id="dokumen-id">
-                    <input type="hidden" name="captured_image" id="dokumen-captured-image">
+                    <input type="hidden" name="id" id="dokumen-k-id">
+                    <input type="hidden" name="captured_image" id="dokumen-k-captured-image">
 
                     <div class="row">
                         <div class="col mb-3 text-center">
-                            <label class="form-label">Foto Dokumen</label>
-                            <video id="video-dokumen" width="100%" height="300" autoplay></video>
-                            <canvas id="canvas-dokumen" class="d-none"></canvas>
-                            <button type="button" id="capture-dokumen" class="btn btn-primary mt-2">Capture</button>
+                            <label class="form-label">Dokumen Keluar</label>
+                            <video id="video-dokumen-k" width="100%" height="300" autoplay></video>
+                            <canvas id="canvas-dokumen-k" class="d-none"></canvas>
+                            <button type="button" id="capture-dokumen-k" class="btn btn-primary mt-2">Capture</button>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col mb-3 text-center">
-                            <img id="preview-dokumen" class="img-fluid d-none" />
+                            <img id="preview-dokumen-k" class="img-fluid d-none" />
                         </div>
                     </div>
 
@@ -103,6 +103,6 @@
         }
 
         // Initialize modals
-        setupUploadModal("upload-dokumen", "video-dokumen", "canvas-dokumen", "capture-dokumen", "preview-dokumen", "dokumen-captured-image", "upload-dokumen-form", ".upload-dokumen-btn", "/angkut/uploadDokumen");
+        setupUploadModal("upload-dokumen-k", "video-dokumen-k", "canvas-dokumen-k", "capture-dokumen-k", "preview-dokumen-k", "dokumen-k-captured-image", "upload-dokumen-k-form", ".upload-dokumen-k-btn", "/bongkar/uploadDokumenK");
     });
 </script>

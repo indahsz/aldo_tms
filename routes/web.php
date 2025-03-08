@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/angkut/uploadSim/{id}', [AngkutController::class, 'uploadSim'])->name('angkut.uploadSim');
     Route::post('/angkut/uploadStnk/{id}', [AngkutController::class, 'uploadStnk'])->name('angkut.uploadStnk');
     Route::post('/angkut/uploadDokumen/{id}', [AngkutController::class, 'uploadDokumen'])->name('angkut.uploadDokumen');
+    Route::post('/angkut/uploadDokumenK/{id}', [AngkutController::class, 'uploadDokumenK'])->name('angkut.uploadDokumenK');
     Route::post('/angkut/muatStart/{id}', [AngkutController::class, 'muatStart'])->name('angkut.muatStart');
     Route::post('/angkut/muatDone/{id}', [AngkutController::class, 'muatDone'])->name('angkut.muatDone');
 
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/bongkar/uploadSim/{id}', [BongkarController::class, 'uploadSim'])->name('bongkar.uploadSim');
     Route::post('/bongkar/uploadStnk/{id}', [BongkarController::class, 'uploadStnk'])->name('bongkar.uploadStnk');
     Route::post('/bongkar/uploadDokumen/{id}', [BongkarController::class, 'uploadDokumen'])->name('bongkar.uploadDokumen');
+    Route::post('/bongkar/uploadDokumenK/{id}', [BongkarController::class, 'uploadDokumenK'])->name('bongkar.uploadDokumenK');
     Route::post('/bongkar/bongkarStart/{id}', [BongkarController::class, 'bongkarStart'])->name('bongkar.bongkarStart');
     Route::post('/bongkar/bongkarDone/{id}', [BongkarController::class, 'bongkarDone'])->name('bongkar.bongkarDone');
 
@@ -38,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('laporanBongkar', LaporanBongkarController::class);
     Route::get('/laporan-angkut/export', [LaporanAngkutController::class, 'exportExcel'])->name('laporanAngkut.export');
     Route::get('/laporan-bongkar/export', [LaporanBongkarController::class, 'exportExcel'])->name('laporanBongkar.export');
-
 });
 
 // Laravel Breeze authentication routes
