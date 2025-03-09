@@ -52,6 +52,7 @@
                         <th>Safety Check</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
+                        <th>Waktu Progress</th>
                         <th>Mulai Muat</th>
                         <th>Selesai Muat</th>
                     </tr>
@@ -117,9 +118,24 @@
                             @endif
                         </td>
                         <td>{{ $item->safety_check ? 'Lengkap' : 'Tidak Lengkap' }}</td>
-                        <td>{{ \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') }} </td>
-                        <td>{{ \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') }} </td>
-                        {{-- <td>Waktu Progress</td> --}}
+                        <td>
+                            {{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') : '-' }}
+                        </td>
+                        <td>
+                            {{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') : '-' }}
+                        </td>
+                        <td>
+                            @if ($item->waktu_out)
+                                @php
+                                    $diffInMinutes = \Carbon\Carbon::parse($item->waktu_in)->diffInMinutes(\Carbon\Carbon::parse($item->waktu_out));
+                                    $hours = floor($diffInMinutes / 60);
+                                    $minutes = $diffInMinutes % 60;
+                                @endphp
+                                {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                                -
+                            @endif
+                        </td>
                         <td>{{ $item->muat_start }} </td>
                         <td>{{ $item->muat_stop }} </td>
                         </td>

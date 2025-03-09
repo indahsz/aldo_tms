@@ -49,6 +49,7 @@
                         <th>Dokumen Keluar</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
+                        <th>Waktu Progress</th>
                         <th>Mulai Bongkar</th>
                         <th>Selesai Bongkar</th>
                     </tr>
@@ -111,8 +112,24 @@
                             <p>No image available</p>
                             @endif
                         </td>
-                        <td>{{ \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') }} </td>
-                        <td>{{ \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') }} </td>
+                        <td>
+                            {{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s') : '-' }}
+                        </td>
+                        <td>
+                            {{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s') : '-' }}
+                        </td>
+                        <td>
+                            @if ($item->waktu_out)
+                                @php
+                                    $diffInMinutes = \Carbon\Carbon::parse($item->waktu_in)->diffInMinutes(\Carbon\Carbon::parse($item->waktu_out));
+                                    $hours = floor($diffInMinutes / 60);
+                                    $minutes = $diffInMinutes % 60;
+                                @endphp
+                                {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                                -
+                            @endif
+                        </td>
                         <td>{{ $item->bongkar_start }} </td>
                         <td>{{ $item->bongkar_stop }} </td>
                         </td>
