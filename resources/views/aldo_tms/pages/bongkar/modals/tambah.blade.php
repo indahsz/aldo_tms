@@ -94,7 +94,8 @@
                             <label for="no_sj" class="col-form-label">Tgl SJ</label>
                         </div>
                         <div class="col-9">
-                            <input type="date" id="tgl_sj" name="tgl_sj" class="form-control" required>
+                            <input type="date" id="tgl_sj" name="tgl_sj" class="form-control"
+                                value="{{ \Carbon\Carbon::today()->toDateString() }}" required>
                         </div>
                     </div>
                     <div class="row mt-3">
