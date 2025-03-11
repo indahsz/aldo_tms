@@ -25,9 +25,9 @@
         </form>
         <div class="table-responsive text-nowrap">
 
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <thead>
-                    <tr>
+                    <tr style="text-align: center;">
                         <th>No.</th>
                         <th><a
                                 href="{{ route('angkut.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No.
@@ -36,7 +36,7 @@
                                 href="{{ route('angkut.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl
                                 Masuk</a></th>
                         <th><a
-                                href="{{ route('angkut.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Departement</a>
+                                href="{{ route('angkut.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Dept</a>
                         </th>
                         <th><a
                                 href="{{ route('angkut.index', ['sort_field' => 'sopir_nama', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Sopir</a>
@@ -76,8 +76,8 @@
                     <tr>
                         <td>{{ $key + 1 }} </td>
                         <td>{{ $item->kode_trans }} </td>
-                        <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') : '-' }}</td>
-                        <td>{{ $item->departement }} </td>
+                        <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d F Y') : '-' }}</td>
+                        <td style="text-align: center;">{{ $item->departement }} </td>
                         <td>{{ $item->sopir_nama }} </td>
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
@@ -85,7 +85,7 @@
                         <td>{{ $item->armada }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->customer }} </td>
-                        <td>{{ $item->tgl_sj ? \Carbon\Carbon::parse($item->tgl_sj)->format('d-m-Y') : '-' }}</td>
+                        <td>{{ $item->tgl_sj ? \Carbon\Carbon::parse($item->tgl_sj)->format('d F Y') : '-' }}</td>
                         <td>{{ $item->no_sj }} </td>
                         <td>{{ $item->nama_barang }} </td>
                         <td>{{ $item->ket_in }} </td>
