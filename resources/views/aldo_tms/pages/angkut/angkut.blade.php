@@ -27,11 +27,11 @@
 
             <table class="table table-hover table-striped">
                 <thead>
-                    <tr style="text-align: center;">
+                    <tr style="text-align: center">
                         <th>No.</th>
                         <th><a
                                 href="{{ route('angkut.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No.
-                                Transaksi</a></th>
+                                Tiket</a></th>
                         <th><a
                                 href="{{ route('angkut.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl
                                 Masuk</a></th>
@@ -60,8 +60,8 @@
                         <th>Ket. Keluar</th>
                         <th>SIM</th>
                         <th>STNK</th>
-                        <th>Dokumen Masuk</th>
-                        <th>Dokumen Keluar</th>
+                        <th>Dok. Masuk</th>
+                        <th>Dok. Keluar</th>
                         <th>Safety Check</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
@@ -101,7 +101,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -115,7 +115,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -129,7 +129,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -143,7 +143,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>{{ $item->safety_check ? 'Lengkap' : 'Tidak Lengkap' }}</td>

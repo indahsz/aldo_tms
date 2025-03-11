@@ -26,12 +26,12 @@
 
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr style="text-align: center">
                         <th>No.</th>
-                        <th><a href="{{ route('bongkar.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No. Transaksi</th>
+                        <th><a href="{{ route('bongkar.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No. Tiket</th>
                         <th><a href="{{ route('bongkar.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl Masuk</th>
                         <th><a
-                                href="{{ route('bongkar.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Departement</a>
+                                href="{{ route('bongkar.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Dept</a>
                         </th>
                         <th>Sopir</th>
                         <th>NIK</th>
@@ -45,8 +45,8 @@
                         <th>Ket. Keluar</th>
                         <th>SIM</th>
                         <th>STNK</th>
-                        <th>Dokumen Masuk</th>
-                        <th>Dokumen Keluar</th>
+                        <th>Dok. Masuk</th>
+                        <th>Dok. Keluar</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
                         <th>Mulai Bongkar</th>
@@ -61,14 +61,14 @@
                     <tr>
                         <td>{{ $key + 1 }} </td>
                         <td>{{ $item->kode_trans }} </td>
-                        <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') : '-' }}</td>
+                        <td>{{ $item->tgl_masuk ? \Carbon\Carbon::parse($item->tgl_masuk)->format('d F Y') : '-' }}</td>
                         <td>{{ $item->departement }} </td>
                         <td>{{ $item->sopir_nama }} </td>
                         <td>{{ $item->sopir_nik }} </td>
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->supplier }} </td>
-                        <td>{{ $item->tgl_sj ? \Carbon\Carbon::parse($item->tgl_sj)->format('d-m-Y') : '-' }}</td>
+                        <td>{{ $item->tgl_sj ? \Carbon\Carbon::parse($item->tgl_sj)->format('d F Y') : '-' }}</td>
                         <td>{{ $item->no_sj }} </td>
                         <td>{{ $item->nama_barang }} </td>
                         <td>{{ $item->ket_in }} </td>
@@ -84,7 +84,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -98,7 +98,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -112,7 +112,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -126,7 +126,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>{{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }}</td>

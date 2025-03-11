@@ -14,12 +14,12 @@
                         </div>
                         <div class="col-9">
                             <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control"
-                                value="{{ \Carbon\Carbon::today()->toDateString() }}" required>
+                                value="{{ \Carbon\Carbon::today()->toDateString() }}" readonly required>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="kode_trans" class="col-form-label">No. Transaksi</label>
+                            <label for="kode_trans" class="col-form-label">No. Tiket</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="kode_trans" name="kode_trans" class="form-control"

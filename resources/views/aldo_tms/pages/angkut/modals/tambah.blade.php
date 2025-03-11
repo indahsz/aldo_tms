@@ -19,7 +19,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <label for="kode_trans" class="col-form-label">No. Transaksi</label>
+                            <label for="kode_trans" class="col-form-label">No. Tiket</label>
                         </div>
                         <div class="col-9">
                             <input type="text" id="kode_trans" name="kode_trans" class="form-control" value="{{ $kodeTrans }}" readonly>
@@ -30,7 +30,7 @@
                             <label for="departement" class="col-form-label">Departement</label>
                         </div>
                         <div class="col-9">
-                            <input type="text" id="departement" name="departement" class="form-control" 
+                            <input type="text" id="departement" name="departement" class="form-control"
                                 value="{{ auth()->user()->departement }}" readonly>
                         </div>
                     </div>

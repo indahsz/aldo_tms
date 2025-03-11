@@ -26,13 +26,13 @@
         </form>
         <div class="table-responsive text-nowrap">
 
-            <table class="table table-hover">
+            <table class="table table-hover" style="text-align: center">
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Kode Transaksi</th>
+                        <th>No. Tiket</th>
                         <th>Tgl Masuk</th>
-                        <th>Departement</th>
+                        <th>Dept</th>
                         <th>Sopir</th>
                         <th>NIK</th>
                         <th>Tlp</th>
@@ -47,8 +47,8 @@
                         <th>Ket. Keluar</th>
                         <th>SIM</th>
                         <th>STNK</th>
-                        <th>Dokumen Masuk</th>
-                        <th>Dokumen Keluar</th>
+                        <th>Dok. Masuk</th>
+                        <th>Dok. Keluar</th>
                         <th>Safety Check</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
@@ -63,7 +63,7 @@
                     <tr>
                         <td>{{ $key + 1 }} </td>
                         <td>{{ $item->kode_trans }} </td>
-                        <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d-m-Y') }} </td>
+                        <td>{{ \Carbon\Carbon::parse($item->tgl_masuk)->format('d F Y') }} </td>
                         <td>{{ $item->departement }} </td>
                         <td>{{ $item->sopir_nama }} </td>
                         <td>{{ $item->sopir_nik }} </td>
@@ -84,7 +84,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -94,7 +94,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -104,7 +104,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>
@@ -114,7 +114,7 @@
                                     width="50" height="50" class="rounded img-thumbnail">
                             </a>
                             @else
-                            <p>No image available</p>
+                            <p>No image</p>
                             @endif
                         </td>
                         <td>{{ $item->safety_check ? 'Lengkap' : 'Tidak Lengkap' }}</td>
@@ -126,14 +126,14 @@
                         </td>
                         <td>
                             @if ($item->waktu_out)
-                                @php
-                                    $diffInMinutes = \Carbon\Carbon::parse($item->waktu_in)->diffInMinutes(\Carbon\Carbon::parse($item->waktu_out));
-                                    $hours = floor($diffInMinutes / 60);
-                                    $minutes = $diffInMinutes % 60;
-                                @endphp
-                                {{ $hours }} hours {{ $minutes }} minutes
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->waktu_in)->diffInMinutes(\Carbon\Carbon::parse($item->waktu_out));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
                             @else
-                                -
+                            -
                             @endif
                         </td>
                         <td>{{ $item->muat_start }} </td>
