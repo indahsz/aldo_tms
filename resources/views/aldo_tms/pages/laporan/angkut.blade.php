@@ -38,6 +38,7 @@
                         <th>Tlp</th>
                         <th>Transporter</th>
                         <th>Armada</th>
+                        <th>Jenis</th>
                         <th>Plat Mobil</th>
                         <th>Customer</th>
                         <th>Tanggal SJ</th>
@@ -55,6 +56,7 @@
                         <th>Waktu Progress</th>
                         <th>Mulai Muat</th>
                         <th>Selesai Muat</th>
+                        <th>Waktu Proses</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -70,6 +72,7 @@
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->transporter }} </td>
                         <td>{{ $item->armada }} </td>
+                        <td>{{ $item->jenis_mobil }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->customer }} </td>
                         <td>{{ $item->tgl_sj }} </td>
@@ -138,6 +141,18 @@
                         </td>
                         <td>{{ $item->muat_start }} </td>
                         <td>{{ $item->muat_stop }} </td>
+                        <td>
+                            @if ($item->muat_stop)
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->muat_start)->diffInMinutes(\Carbon\Carbon::parse($item->muat_stop));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                            -
+                            @endif
+                        </td>
                         </td>
                     </tr>
                     @endforeach

@@ -49,8 +49,10 @@
                         <th>Dok. Keluar</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
+                        <th>Waktu Progress</th>
                         <th>Mulai Bongkar</th>
                         <th>Selesai Bongkar</th>
+                        <th>Waktu Proses</th>
                         <th>Bongkaran</th>
                         <th>Action</th>
                     </tr>
@@ -131,8 +133,32 @@
                         </td>
                         <td>{{ $item->waktu_in ? \Carbon\Carbon::parse($item->waktu_in)->format('d-m-Y H:i') : '-' }}</td>
                         <td>{{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i') : '-' }}</td>
+                        <td>
+                            @if ($item->waktu_out)
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->waktu_in)->diffInMinutes(\Carbon\Carbon::parse($item->waktu_out));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                            -
+                            @endif
+                        </td>
                         <td>{{ $item->bongkar_start ? \Carbon\Carbon::parse($item->bongkar_start)->format('d-m-Y H:i') : '-' }} </td>
-                        <td>{{ $item->bongkar_stop ? \Carbon\Carbon::parse($item->bongkar_out)->format('d-m-Y H:i') : '-' }} </td>
+                        <td>{{ $item->bongkar_stop ? \Carbon\Carbon::parse($item->bongkar_stop)->format('d-m-Y H:i') : '-' }} </td>
+                        <td>
+                            @if ($item->bongkar_stop)
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->bongkar_start)->diffInMinutes(\Carbon\Carbon::parse($item->bongkar_stop));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                            -
+                            @endif
+                        </td>
                         <td>
                             <div class="d-flex gap-2">
                                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#bongkar-start{{ $item->id }}">

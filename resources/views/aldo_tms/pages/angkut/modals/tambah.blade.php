@@ -80,6 +80,20 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-3">
+                            <label for="jenis_mobil" class="col-form-label">Jenis Mobil</label>
+                        </div>
+                        <div class="col-9">
+                            <select class="form-select" name="jenis_mobil" id="jenis_mobil">
+                                <option value="-">--Pilih--</option>
+                                <option value="Container">Container</option>
+                                <option value="Wing Box">Wing Box</option>
+                                <option value="Colt">Colt</option>
+                                <option value="Dump Truck">Dump Truck</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
                             <label for="nopol_mobil" class="col-form-label">Nopol Mobil</label>
                         </div>
                         <div class="col-9">
@@ -128,7 +142,7 @@
                         </div>
                         <div class="col-9">
                             <input type="datetime-local" class="form-control" id="waktu_in" name="waktu_in"
-                                required>
+                            value="{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}" readonly required>
                         </div>
                     </div>
             </div>

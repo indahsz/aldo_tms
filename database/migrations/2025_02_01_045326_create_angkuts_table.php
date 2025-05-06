@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('sopir_tlp')->nullable();
             $table->string('transporter')->nullable();
             $table->string('armada')->nullable();
+            $table->string('jenis_mobil')->nullable();
             $table->string('nopol_mobil')->nullable();
             $table->string('customer')->nullable();
             $table->date('tgl_sj')->nullable();

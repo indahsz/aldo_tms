@@ -49,6 +49,7 @@
                         <th><a
                                 href="{{ route('angkut.index', ['sort_field' => 'armada', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Armada
                         </th>
+                        <th>Jenis</th>
                         <th>Plat Mobil</th>
                         <th><a
                                 href="{{ route('angkut.index', ['sort_field' => 'customer', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Customer
@@ -65,8 +66,10 @@
                         <th>Safety Check</th>
                         <th>Waktu Masuk</th>
                         <th>Waktu Keluar</th>
+                        <th>Waktu Progress</th>
                         <th>Mulai Muat</th>
                         <th>Selesai Muat</th>
+                        <th>Waktu Proses</th>
                         <th>Muatan</th>
                         <th>Action</th>
                     </tr>
@@ -83,6 +86,7 @@
                         <td>{{ $item->sopir_tlp }} </td>
                         <td>{{ $item->transporter }} </td>
                         <td>{{ $item->armada }} </td>
+                        <td>{{ $item->jenis_mobil }} </td>
                         <td>{{ $item->nopol_mobil }} </td>
                         <td>{{ $item->customer }} </td>
                         <td>{{ $item->tgl_sj ? \Carbon\Carbon::parse($item->tgl_sj)->format('d F Y') : '-' }}</td>
@@ -151,9 +155,33 @@
                         </td>
                         <td>{{ $item->waktu_out ? \Carbon\Carbon::parse($item->waktu_out)->format('d-m-Y H:i') : '-' }}
                         </td>
+                        <td>
+                            @if ($item->waktu_out)
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->waktu_in)->diffInMinutes(\Carbon\Carbon::parse($item->waktu_out));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                            -
+                            @endif
+                        </td>
                         <td>{{ $item->muat_start ? \Carbon\Carbon::parse($item->muat_start)->format('d-m-Y H:i') : '-' }}
                         </td>
                         <td>{{ $item->muat_stop ? \Carbon\Carbon::parse($item->muat_stop)->format('d-m-Y H:i') : '-' }}
+                        </td>
+                        <td>
+                            @if ($item->muat_stop)
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->muat_start)->diffInMinutes(\Carbon\Carbon::parse($item->muat_stop));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                            -
+                            @endif
                         </td>
                         <td>
                             <div class="d-flex gap-2">

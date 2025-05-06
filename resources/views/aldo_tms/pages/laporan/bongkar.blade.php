@@ -52,6 +52,7 @@
                         <th>Waktu Progress</th>
                         <th>Mulai Bongkar</th>
                         <th>Selesai Bongkar</th>
+                        <th>Waktu Proses</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -132,6 +133,18 @@
                         </td>
                         <td>{{ $item->bongkar_start }} </td>
                         <td>{{ $item->bongkar_stop }} </td>
+                        <td>
+                            @if ($item->bongkar_stop)
+                            @php
+                            $diffInMinutes = \Carbon\Carbon::parse($item->bongkar_start)->diffInMinutes(\Carbon\Carbon::parse($item->bongkar_stop));
+                            $hours = floor($diffInMinutes / 60);
+                            $minutes = $diffInMinutes % 60;
+                            @endphp
+                            {{ $hours }} hours {{ $minutes }} minutes
+                            @else
+                            -
+                            @endif
+                        </td>
                         </td>
                     </tr>
                     @endforeach
