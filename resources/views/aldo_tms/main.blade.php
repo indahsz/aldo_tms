@@ -53,6 +53,13 @@
 
   <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
   <!-- Page CSS -->
 
   <!-- Helpers -->
@@ -110,6 +117,15 @@
 
 
   <!-- Core JS -->
+  <script>
+    flatpickr("#waktu_in", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true,
+        defaultDate: "{{ \Carbon\Carbon::now()->format('Y-m-d H:i') }}",
+        allowInput: false,
+    });
+  </script>
 
 
   <!-- build:js assets/vendor/js/core.js -->

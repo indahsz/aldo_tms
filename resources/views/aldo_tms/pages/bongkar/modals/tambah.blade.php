@@ -133,8 +133,8 @@
                             <label for="waktu_in" class="col-form-label">Waktu Masuk</label>
                         </div>
                         <div class="col-9">
-                            <input type="datetime-local" class="form-control" id="waktu_in" name="waktu_in"
-                                required>
+                            <input type="text" class="form-control" id="waktu_in" name="waktu_in"
+                                value="{{ \Carbon\Carbon::now()->format('Y-m-d H:i') }}" >
                         </div>
                     </div>
             </div>
