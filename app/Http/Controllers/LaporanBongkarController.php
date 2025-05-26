@@ -17,7 +17,7 @@ class LaporanBongkarController extends Controller
         $fromDate = $request->input('from_date', now()->subMonth()->format('Y-m-d'));
         $toDate = $request->input('to_date', now()->format('Y-m-d'));
 
-        $data = Bongkar::whereBetween('tgl_masuk', [$fromDate, $toDate])->paginate(20);
+        $data = Bongkar::whereBetween('tgl_masuk', [$fromDate, $toDate])->paginate(50);
         $users = User::all();
 
         return view('aldo_tms.pages.laporan.bongkar', compact('data', 'users'));

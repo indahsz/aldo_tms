@@ -38,7 +38,7 @@ class BongkarController extends Controller
         $sortField = $request->get('sort_field', 'tgl_masuk'); //default sorting by 'tanggal_masuk'
         $sortOrder = $request->get('sort_order', 'desc'); //default descending;
 
-        $data = $query->orderBy($sortField, $sortOrder)->paginate(10);
+        $data = $query->orderBy($sortField, $sortOrder)->paginate(50);
 
         return view('aldo_tms.pages.bongkar.bongkar', compact('data', 'kodeTrans', 'users', 'sortOrder', 'sortField'));
     }

@@ -41,7 +41,7 @@ class AngkutController extends Controller
         $sortField = $request->get('sort_field', 'tgl_masuk'); //default sorting by 'tanggal_masuk'
         $sortOrder = $request->get('sort_order', 'desc'); //default descending;
 
-        $data = $query->orderBy($sortField, $sortOrder)->paginate(10);
+        $data = $query->orderBy($sortField, $sortOrder)->paginate(50);
 
         return view('aldo_tms.pages.angkut.angkut', compact('data', 'kodeTrans', 'users', 'sortOrder', 'sortField'));
     }
@@ -62,8 +62,8 @@ class AngkutController extends Controller
             'nopol_mobil'  => 'required',
             'ket_in'       => 'required',
             'safety_check' => 'required',
-            'empty_in'     => 'required|',
-            'waktu_in'     => 'required'
+            'empty_in'     => 'required',
+            'waktu_in'     => 'required|'
         ]);
 
         // Get the currently logged-in user

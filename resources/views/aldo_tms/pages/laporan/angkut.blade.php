@@ -24,39 +24,39 @@
                 </div>
             </div>
         </form>
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive">
 
-            <table class="table table-hover" style="text-align: center">
+            <table class="table table-hover" style="text-align: center; font-size: 13px; width:100%;">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>No. Tiket</th>
-                        <th>Tgl Masuk</th>
-                        <th>Dept</th>
-                        <th>Sopir</th>
-                        <th>NIK</th>
-                        <th>Tlp</th>
-                        <th>Transporter</th>
-                        <th>Armada</th>
-                        <th>Jenis</th>
-                        <th>Plat Mobil</th>
-                        <th>Customer</th>
-                        <th>Tanggal SJ</th>
-                        <th>No. SJ</th>
-                        <th>Barang</th>
-                        <th>Ket. Masuk</th>
-                        <th>Ket. Keluar</th>
-                        <th>SIM</th>
-                        <th>STNK</th>
-                        <th>Dok. Masuk</th>
-                        <th>Dok. Keluar</th>
-                        <th>Safety Check</th>
-                        <th>Waktu Masuk</th>
-                        <th>Waktu Keluar</th>
-                        <th>Waktu Progress</th>
-                        <th>Mulai Muat</th>
-                        <th>Selesai Muat</th>
-                        <th>Waktu Proses</th>
+                        <th class="text-nowrap">No.</th>
+                        <th class="text-nowrap">No. Tiket</th>
+                        <th class="text-nowrap">Tgl Masuk</th>
+                        <th class="text-nowrap">Dept</th>
+                        <th class="text-nowrap">Sopir</th>
+                        <th class="text-nowrap">NIK</th>
+                        <th class="text-nowrap">Tlp</th>
+                        <th class="text-nowrap">Transporter</th>
+                        <th class="text-nowrap">Armada</th>
+                        <th class="text-nowrap">Jenis</th>
+                        <th class="text-nowrap">Plat Mobil</th>
+                        <th class="text-nowrap">Customer</th>
+                        <th class="text-nowrap">Tanggal SJ</th>
+                        <th class="text-nowrap">No. SJ</th>
+                        <th class="text-nowrap">Barang</th>
+                        <th class="text-wrap">Ket. Masuk</th>
+                        <th class="text-wrap">Ket. Keluar</th>
+                        <th class="text-nowrap">SIM</th>
+                        <th class="text-nowrap">STNK</th>
+                        <th class="text-nowrap">Dok. Masuk</th>
+                        <th class="text-nowrap">Dok. Keluar</th>
+                        <th class="text-nowrap">Safety Check</th>
+                        <th class="text-nowrap">Waktu Masuk</th>
+                        <th class="text-nowrap">Waktu Keluar</th>
+                        <th class="text-nowrap">Waktu Progress</th>
+                        <th class="text-nowrap">Mulai Muat</th>
+                        <th class="text-nowrap">Selesai Muat</th>
+                        <th class="text-nowrap">Waktu Proses</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">

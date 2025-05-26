@@ -142,7 +142,7 @@
                         </div>
                         <div class="col-9">
                             <input type="datetime-local" class="form-control" id="waktu_in" name="waktu_in"
-                            value="{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}" readonly required>
+                            value="{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}" required>
                         </div>
                     </div>
             </div>

@@ -23,55 +23,55 @@
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive">
 
-            <table class="table table-hover table-striped">
+            <table class="table table-hover table-striped wrap" style="font-size: 13px; width:100%;">
                 <thead>
                     <tr style="text-align: center">
-                        <th>No.</th>
-                        <th><a
+                        <th class="text-nowrap">No.</th>
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'kode_trans', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">No.
                                 Tiket</a></th>
-                        <th><a
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'tgl_masuk', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Tgl
                                 Masuk</a></th>
-                        <th><a
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'departement', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Dept</a>
                         </th>
-                        <th><a
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'sopir_nama', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Sopir</a>
                         </th>
-                        <th>NIK</th>
-                        <th>Tlp</th>
-                        <th><a
+                        <th class="text-nowrap">NIK</th>
+                        <th class="text-nowrap">Tlp</th>
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'transporter', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Transporter
                         </th>
-                        <th><a
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'armada', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Armada
                         </th>
-                        <th>Jenis</th>
-                        <th>Plat Mobil</th>
-                        <th><a
+                        <th class="text-nowrap">Jenis</th>
+                        <th class="text-nowrap">Plat Mobil</th>
+                        <th class="text-nowrap"><a
                                 href="{{ route('angkut.index', ['sort_field' => 'customer', 'sort_order' => request('sort_order') == 'asc' ? 'desc' : 'asc']) }}">Customer
                         </th>
-                        <th>Tanggal SJ</th>
-                        <th>No. SJ</th>
-                        <th>Barang</th>
-                        <th>Ket. Masuk</th>
-                        <th>Ket. Keluar</th>
-                        <th>SIM</th>
-                        <th>STNK</th>
-                        <th>Dok. Masuk</th>
-                        <th>Dok. Keluar</th>
-                        <th>Safety Check</th>
-                        <th>Waktu Masuk</th>
-                        <th>Waktu Keluar</th>
-                        <th>Waktu Progress</th>
-                        <th>Mulai Muat</th>
-                        <th>Selesai Muat</th>
-                        <th>Waktu Proses</th>
-                        <th>Muatan</th>
-                        <th>Action</th>
+                        <th class="text-nowrap">Tanggal SJ</th>
+                        <th class="text-nowrap">No. SJ</th>
+                        <th class="text-nowrap">Barang</th>
+                        <th class="text-wrap">Ket. Masuk</th>
+                        <th class="text-wrap">Ket. Keluar</th>
+                        <th class="text-nowrap">SIM</th>
+                        <th class="text-nowrap">STNK</th>
+                        <th class="text-nowrap">Dok. Masuk</th>
+                        <th class="text-nowrap">Dok. Keluar</th>
+                        <th class="text-nowrap">Safety Check</th>
+                        <th class="text-nowrap">Waktu Masuk</th>
+                        <th class="text-nowrap">Waktu Keluar</th>
+                        <th class="text-nowrap">Waktu Progress</th>
+                        <th class="text-nowrap">Mulai Muat</th>
+                        <th class="text-nowrap">Selesai Muat</th>
+                        <th class="text-nowrap">Waktu Proses</th>
+                        <th class="text-wrap">Muatan</th>
+                        <th class="text-wrap">Action</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -95,9 +95,9 @@
                         <td>{{ $item->ket_in }} </td>
                         <td>{{ $item->ket_out }} </td>
                         <td>
-                            <button type="button" class="btn btn-primary upload-sim-btn" data-bs-toggle="modal"
-                                data-bs-target="#upload-sim" data-id="{{ $item->id }}">
-                                +
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                             data-bs-target="#upload-sim" data-id="{{ $item->id }}">
+                                <i class="bx bx-upload"></i>
                             </button>
                             @if (!empty($item->foto_sim))
                             <a href="{{ asset('storage/' . $item->foto_sim) }}" target="_blank">
@@ -109,7 +109,7 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary upload-stnk-btn" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary px-2 py-1 upload-stnk-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-stnk" data-id="{{ $item->id }}">
                                 +
                             </button>
@@ -123,7 +123,7 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary upload-dokumen-btn" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary px-2 py-1 upload-dokumen-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-dokumen" data-id="{{ $item->id }}">
                                 +
                             </button>
@@ -137,7 +137,7 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary upload-dokumen-k-btn" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary px-2 py-1 upload-dokumen-k-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-dokumen-k" data-id="{{ $item->id }}">
                                 +
                             </button>
