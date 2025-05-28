@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-9">
                             <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control"
-                                value="{{ \Carbon\Carbon::today()->toDateString() }}" readonly required>
+                                value="{{ \Carbon\Carbon::today()->toDateString() }}" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -146,7 +146,7 @@
                         </div>
                         <div class="col-9">
                             <input type="datetime-local" class="form-control" id="waktu_in" name="waktu_in"
-                            value="{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}" readonly required>
+                            value="{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}" required>
                         </div>
                     </div>
             </div>

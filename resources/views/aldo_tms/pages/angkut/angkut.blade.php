@@ -111,7 +111,7 @@
                         <td>
                             <button type="button" class="btn btn-primary px-2 py-1 upload-stnk-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-stnk" data-id="{{ $item->id }}">
-                                +
+                                <i class="bx bx-upload"></i>
                             </button>
                             @if (!empty($item->foto_stnk))
                             <a href="{{ asset('storage/' . $item->foto_stnk) }}" target="_blank">
@@ -125,7 +125,7 @@
                         <td>
                             <button type="button" class="btn btn-primary px-2 py-1 upload-dokumen-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-dokumen" data-id="{{ $item->id }}">
-                                +
+                                <i class="bx bx-upload"></i>
                             </button>
                             @if (!empty($item->foto_dokumen))
                             <a href="{{ asset('storage/' . $item->foto_dokumen) }}" target="_blank">
@@ -139,7 +139,7 @@
                         <td>
                             <button type="button" class="btn btn-primary px-2 py-1 upload-dokumen-k-btn" data-bs-toggle="modal"
                                 data-bs-target="#upload-dokumen-k" data-id="{{ $item->id }}">
-                                +
+                                <i class="bx bx-upload"></i>
                             </button>
                             @if (!empty($item->foto_dokumen_k))
                             <a href="{{ asset('storage/' . $item->foto_dokumen_k) }}" target="_blank">

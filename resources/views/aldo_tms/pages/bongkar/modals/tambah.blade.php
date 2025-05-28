@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-9">
                             <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control"
-                                value="{{ \Carbon\Carbon::today()->toDateString() }}" readonly required>
+                                value="{{ \Carbon\Carbon::today()->toDateString() }}" required>
                         </div>
                     </div>
                     <div class="row mt-3">

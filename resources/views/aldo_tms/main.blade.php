@@ -122,8 +122,9 @@
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         time_24hr: true,
-        defaultDate: "{{ \Carbon\Carbon::now()->format('Y-m-d H:i') }}",
-        allowInput: false,
+        //defaultDate: "{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}",
+        allowInput: true,
+        defaultDate: new Date(new Date().getTime()),
     });
   </script>
 
