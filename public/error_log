@@ -483,3 +483,11 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/public/index.php on line 13
+[28-May-2025 07:52:43 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 07:54:13 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 07:56:18 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 07:56:24 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 07:58:13 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 08:02:03 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 09:22:50 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
+[28-May-2025 12:33:57 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.0.30. in /home/aygjzcxs/public_html/algate.aldodevteam.web.id/vendor/composer/platform_check.php on line 28
