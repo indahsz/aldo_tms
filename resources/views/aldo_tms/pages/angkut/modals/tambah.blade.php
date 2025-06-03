@@ -6,6 +6,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="POST" enctype="multipart/form-data" action="{{ route('angkut.store') }}">
                     @csrf
                     <div class="row">
@@ -146,7 +155,7 @@
                         </div>
                         <div class="col-9">
                             <input type="datetime-local" class="form-control" id="waktu_in" name="waktu_in"
-                            value="{{ \Carbon\Carbon::now()->format('d-m-Y H:i') }}" required>
+                                value="{{ \Carbon\Carbon::now()->format('Y-m-d\TH:i') }}" required>
                         </div>
                     </div>
             </div>

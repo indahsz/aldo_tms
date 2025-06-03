@@ -65,7 +65,10 @@ class AngkutController extends Controller
     }
 
     public function store(Request $request)
+    
+
     {
+
         $this->validate($request, [
             'tgl_masuk'    => 'required|date',
             // 'kode_trans'   => 'required', // kode_trans digenerate, jadi tidak perlu divalidasi dari input
@@ -80,8 +83,10 @@ class AngkutController extends Controller
             'ket_in'       => 'required',
             'safety_check' => 'required',
             'empty_in'     => 'required',
-            'waktu_in'     => 'required|date_format:Y-m-d\TH:i', // Pastikan format waktu sesuai
+            'waktu_in'     => 'required', // Pastikan format waktu sesuai
         ]);
+
+        
 
         // Get the currently logged-in user
         $user = Auth::user();
