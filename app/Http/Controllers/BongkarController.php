@@ -112,16 +112,16 @@ class BongkarController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'sim_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/sim/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/bongkar/sim/$imageName", base64_decode($image));
 
-            $bongkar->update(['foto_sim' => "upload/images/sim/$imageName"]);
+            $bongkar->update(['foto_sim' => "upload/images/bongkar/sim/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_sim')) {
             $file = $request->file('foto_sim');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/sim', $fileName, 'public');
+            $path = $file->storeAs('upload/images/bongkar/sim', $fileName, 'public');
 
             $bongkar->update(['foto_sim' => $path]);
         }
@@ -149,16 +149,16 @@ class BongkarController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'stnk_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/stnk/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/bongkar/stnk/$imageName", base64_decode($image));
 
-            $bongkar->update(['foto_stnk' => "upload/images/stnk/$imageName"]);
+            $bongkar->update(['foto_stnk' => "upload/images/bongkar/stnk/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_stnk')) {
             $file = $request->file('foto_stnk');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/stnk', $fileName, 'public');
+            $path = $file->storeAs('upload/images/bongkar/stnk', $fileName, 'public');
 
             $bongkar->update(['foto_stnk' => $path]);
         }
@@ -185,16 +185,16 @@ class BongkarController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'dokumen_msk_' . time() . '_' . Str::random(10) . '.png';
 
-            Storage::disk('public')->put("upload/images/dokumen/dokumen_masuk/$imageName", base64_decode($image));
+            Storage::disk('public')->put("upload/images/bongkar/dokumen/dokumen_masuk/$imageName", base64_decode($image));
 
-            $bongkar->update(['foto_dokumen' => "upload/images/dokumen/dokumen_masuk/$imageName"]);
+            $bongkar->update(['foto_dokumen' => "upload/images/bongkar/dokumen/dokumen_masuk/$imageName"]);
         }
 
         // Handle file upload
         if ($request->hasFile('foto_dokumen')) {
             $file = $request->file('foto_dokumen');
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('upload/images/dokumen/dokumen_masuk/', $fileName, 'public');
+            $path = $file->storeAs('upload/images/bongkar/dokumen/dokumen_masuk/', $fileName, 'public');
 
             $bongkar->update(['foto_dokumen' => $path]);
         }

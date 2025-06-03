@@ -95,7 +95,7 @@
                         <td>{{ $item->ket_in }} </td>
                         <td>{{ $item->ket_out }} </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-sm btn-primary upload-sim-btn" data-bs-toggle="modal"
                              data-bs-target="#upload-sim" data-id="{{ $item->id }}">
                                 <i class="bx bx-upload"></i>
                             </button>
