@@ -44,14 +44,34 @@ class LaporanBongkarExport implements FromCollection, WithHeadings, ShouldAutoSi
             'Ket. Keluar',
             'Waktu Masuk',
             'Waktu Keluar',
-            'Mulai Bongkar',
-            'Selesai Muat'
+            'Waktu Progress',
+            'Mulai Muat',
+            'Akhir Muat',
+            'Waktu Proses'
         ];
     }
 
 
     public function map($item): array
     {
+        // Hitung waktu proses masuk -> keluar
+    $waktuProses = '-';
+    if ($item->waktu_out && $item->waktu_in) {
+        $diff = Carbon::parse($item->waktu_in)->diffInMinutes(Carbon::parse($item->waktu_out));
+        $jam = floor($diff / 60);
+        $menit = $diff % 60;
+        $waktuProses = "{$jam} hours {$menit} minutes";
+    }
+
+    // Hitung waktu bongkar_start -> bongkar_stop
+    $waktuBongkar = '-';
+    if ($item->bongkar_start && $item->bongkar_stop) {
+        $diff = Carbon::parse($item->bongkar_start)->diffInMinutes(Carbon::parse($item->bongkar_stop));
+        $jam = floor($diff / 60);
+        $menit = $diff % 60;
+        $waktuBongkar = "{$jam} hours {$menit} minutes";
+    }
+
         return [
             $item->kode_trans,
             Carbon::parse($item->tgl_masuk)->format('d-m-Y'),
@@ -68,8 +88,10 @@ class LaporanBongkarExport implements FromCollection, WithHeadings, ShouldAutoSi
             $item->ket_out,
             Carbon::parse($item->waktu_in)->format('d-m-Y H:i:s'),
             Carbon::parse($item->waktu_out)->format('d-m-Y H:i:s'),
-            $item->bongkar_start,
-            $item->bongkar_stop,
+            $waktuProses,
+            $item->bongkar_start ? Carbon::parse($item->muat_start)->format('d-m-Y H:i') : '-',
+            $item->bongkar_stop ? Carbon::parse($item->bongkar_stop)->format('d-m-Y H:i') : '-',
+            $waktuBongkar,
         ];
     }
 }

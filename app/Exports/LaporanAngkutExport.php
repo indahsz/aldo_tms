@@ -48,7 +48,7 @@ class LaporanAngkutExport implements FromCollection, WithHeadings, ShouldAutoSiz
             'Safety Check',
             'Waktu Masuk',
             'Waktu Keluar',
-            'Waktu Prosses',
+            'Waktu Progress',
             'Mulai Muat',
             'Akhir Muat',
             'Waktu Proses'
